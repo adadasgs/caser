@@ -277,6 +277,169 @@ body.case-detail-open .top{background:#11161deF!important}
  .case-opening-heading small{display:none}.case-roulette-window .reel-card{width:108px;flex-basis:108px;height:125px}.case-roulette-window .reel-card .weapon{height:72px}
 }
 
+
+/* CASE SCENE — replace abstract backdrop with an actual CS2 map environment */
+.case-detail-toolbar{height:44px!important;background:rgba(19,24,31,.96)!important}
+.case-scene{
+  min-height:390px!important;
+  background:#39414a!important;
+}
+.case-scene:before{
+  content:"";
+  position:absolute;
+  inset:-5px;
+  z-index:0;
+  background:
+    linear-gradient(180deg,rgba(12,16,21,.12) 0%,rgba(12,16,21,.20) 48%,rgba(12,16,21,.78) 100%),
+    linear-gradient(90deg,rgba(12,16,21,.20),transparent 48%,rgba(12,16,21,.10)),
+    url("https://win.gg/wp-content/uploads/2022/07/filtered-mirage-a-site.png.webp");
+  background-size:cover;
+  background-position:center 48%;
+  filter:blur(1.5px);
+  transform:scale(1.025);
+}
+.case-scene:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:radial-gradient(ellipse at 50% 42%,transparent 25%,rgba(8,12,17,.35) 100%);
+}
+.case-scene-content{
+  position:relative;
+  z-index:1;
+  min-height:345px!important;
+  max-width:none!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-rows:215px auto!important;
+  justify-items:center;
+  align-items:center;
+  gap:0!important;
+  padding:18px 18px 48px!important;
+  text-align:center;
+}
+.case-scene-object{
+  grid-row:1!important;
+  width:100%;
+  height:215px!important;
+  min-height:0!important;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.case-scene-object img{
+  max-width:min(62vw,360px)!important;
+  max-height:205px!important;
+  width:auto!important;
+  height:auto!important;
+  object-fit:contain;
+  transform:perspective(900px) rotateY(-7deg) rotateZ(-1deg)!important;
+  filter:drop-shadow(0 24px 20px #000d)!important;
+  animation:caseCrateIdle 5s ease-in-out infinite;
+}
+.case-scene-light{
+  width:280px!important;
+  height:135px!important;
+  background:#d9944050!important;
+  filter:blur(58px)!important;
+}
+.case-scene-info{
+  grid-row:2!important;
+  width:100%;
+  max-width:none!important;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  text-shadow:0 2px 14px #000d;
+}
+.case-scene-kicker{display:none!important}
+.case-scene-info h1{
+  margin:0 0 7px!important;
+  font-size:clamp(22px,2.6vw,30px)!important;
+  line-height:1.05!important;
+  letter-spacing:.7px!important;
+}
+.case-scene-price{
+  margin:0 0 12px!important;
+  font-size:12px!important;
+  color:#f3f4f5!important;
+  letter-spacing:.5px!important;
+}
+.case-open-cta{
+  min-width:190px!important;
+  height:39px!important;
+  padding:0 22px!important;
+  border:1px solid #858d96!important;
+  border-radius:2px!important;
+  background:linear-gradient(180deg,rgba(55,62,71,.96),rgba(26,31,38,.98))!important;
+  color:#f1f3f5!important;
+  font-size:11px!important;
+  box-shadow:0 4px 18px #0009!important;
+}
+.case-open-cta:hover{
+  border-color:#e0a14b!important;
+  background:linear-gradient(180deg,#525b66,#29313a)!important;
+}
+.case-scene-caption{display:none!important}
+.case-notice{
+  margin:10px auto 0!important;
+  max-width:390px!important;
+  background:rgba(20,22,25,.86)!important;
+  border-color:#d59643!important;
+}
+.case-contents-section{
+  background:linear-gradient(180deg,#171c23,#1d232b)!important;
+  padding:20px clamp(12px,2.5vw,34px) 48px!important;
+}
+.case-contents-heading{
+  margin-bottom:13px!important;
+}
+.case-content-item{
+  background:linear-gradient(160deg,#333b46,#242b34)!important;
+  border-color:#4a5562!important;
+}
+.case-opening-inline{
+  position:relative;
+  overflow:hidden;
+  background:#171d24!important;
+}
+.case-opening-inline:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,rgba(13,18,24,.78),rgba(13,18,24,.91)),
+    url("https://win.gg/wp-content/uploads/2022/07/filtered-mirage-a-site.png.webp") center 48%/cover no-repeat;
+  filter:blur(1px);
+  transform:scale(1.03);
+  pointer-events:none;
+}
+.case-opening-inline>*{position:relative;z-index:1}
+.case-roulette-window{
+  background:rgba(10,15,21,.84)!important;
+  backdrop-filter:blur(5px);
+}
+@media(max-width:850px){
+  .case-scene{min-height:360px!important}
+  .case-scene-content{min-height:320px!important;grid-template-rows:190px auto!important;padding:14px 14px 44px!important}
+  .case-scene-object{height:190px!important}
+  .case-scene-object img{max-width:min(72vw,300px)!important;max-height:178px!important}
+}
+@media(max-width:560px){
+  .case-scene{min-height:330px!important}
+  .case-scene-content{min-height:292px!important;grid-template-rows:170px auto!important;padding:12px 12px 40px!important}
+  .case-scene-object{height:170px!important}
+  .case-scene-object img{max-width:min(78vw,250px)!important;max-height:158px!important}
+  .case-scene-info h1{font-size:22px!important}
+  .case-scene-price{font-size:10px!important}
+  .case-open-cta{width:190px!important;min-width:190px!important}
+}
+
 </style></head><body>
 <header class="top"><div class="brand"><img src="https://caser.one/cdn/fa/icons/header/logo_text_ru.webp" alt="CASER"></div><nav class="nav"><button data-view="inventory">ИНВЕНТАРЬ</button><button data-view="cases">КЕЙСЫ</button><button class="active" data-view="upgrade">АПГРЕЙДЫ</button><button data-view="rewards">НАГРАДЫ</button><button data-view="profile">ПРОФИЛЬ</button></nav><div class="account"><span class="wallet">⬡ <b id="balance">0</b> C</span><button class="plus" id="openDeposit">+</button><button class="avatar" id="avatar" title="Открыть профиль">🥷</button></div></header>
 <div class="layout"><aside class="left"><div class="online">ONLINE <b>◉ LIVE</b></div><div class="feed" id="feed"></div><div class="social">➤　◎　✦</div></aside><main><div class="subnav"><button class="active" data-case-filter="all">ВСЕ</button><button data-case-filter="hot">ГОРЯЧИЕ</button></div>
