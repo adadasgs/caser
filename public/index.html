@@ -306,6 +306,7 @@ function spin(){
   if(finished)return;finished=true;
   if(fallbackTimer)clearTimeout(fallbackTimer);
   reel.removeEventListener("transitionend",onTransitionEnd);
+  if(target)target.classList.add("is-winning");
   rolling=false;data.items.unshift(winningDrop);save();
   $("caseModal").classList.remove("show");
   $("dropTitle").textContent="КЕЙС ОТКРЫТ";
