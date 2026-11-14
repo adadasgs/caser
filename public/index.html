@@ -848,7 +848,9 @@ async function loadSkinCatalog(){
   }
   if(mapped.length<100)throw new Error("Получен неполный каталог");
   mapped.sort((a,b)=>a[2]-b[2]);
+  const previousTargetName=selectedTarget?.[0];
   catalogItems=mapped;
+  if(previousTargetName)selectedTarget=mapped.find(item=>item[0]===previousTargetName)||null;
   catalogLoaded=true;
   catalogPage=1;
   const updated=priceData.updated_at?new Date(priceData.updated_at).toLocaleString("ru-RU"):"время обновления не указано";
@@ -902,6 +904,7 @@ $("upgradeAction").onclick=()=>{
  const stake=selectedItems.reduce((s,x)=>s+Number(x[2]||0),0)+cash;
  const target=mysteryMode?catalogItems[Math.floor(Math.random()*catalogItems.length)]:selectedTarget;
  const chance=upgradeChance(stake,target[2]),won=Math.random()*100<chance;
+ $("chance").textContent=chance.toFixed(2)+"%";
  upgradeBusy=true;$("upgradeAction").disabled=true;
  const dial=$("upgradeDial");
  const chancePart=Math.max(0,Math.min(95,chance))/100;
