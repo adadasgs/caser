@@ -154,7 +154,7 @@ body{background:radial-gradient(ellipse at 50% -22%,#343b45 0,transparent 53%),#
 @media(max-width:760px){.weekly-hero{grid-template-columns:1fr;padding:22px}.weekly-art{min-height:110px}.weekly-art img{max-height:130px}.reward-steps{grid-template-columns:1fr}}
 .case-toolbar{display:grid;grid-template-columns:minmax(180px,2fr) repeat(2,minmax(90px,1fr)) minmax(150px,1fr);gap:9px;margin:0 0 18px}.case-toolbar input,.case-toolbar select{min-width:0;padding:10px;border-radius:3px;background:#171c22;border:1px solid #414a56;color:#edf0f4}.case-quality,.case-opens{display:block;padding:0 12px 6px;color:#9fa8b3;font-size:10px}.case-opens{color:#d4a05b;padding-bottom:12px}.create-case-link{display:inline-flex;align-items:center;text-decoration:none}@media(max-width:760px){.case-toolbar{grid-template-columns:1fr 1fr}.case-toolbar input:first-child{grid-column:1/-1}}
 /* Case screen and reel alignment — isolated override */
-body{background:#171a1f url("https://caser.gg/cdn/fa/images/brands/caser-gg/case-bg.webp") center top/cover fixed no-repeat!important}
+body{background:#15191f!important}
 .case-modal{width:min(1120px,100%);max-height:94vh;overflow-y:auto;padding:0;background:#151a20!important;border:1px solid #59616b!important;border-radius:5px!important;text-align:left!important;box-shadow:0 24px 90px #000c}
 .case-stage{position:relative;min-height:350px;overflow:hidden;background:linear-gradient(90deg,#111820e8 0%,#111820a6 48%,#11182070 100%),url("https://caser.gg/cdn/fa/images/brands/caser-gg/case-bg.webp") center/cover no-repeat}
 .case-stage:after{content:"";position:absolute;inset:0;pointer-events:none;background:url("https://caser.gg/cdn/fa/images/brands/caser-gg/header-dots-alpha-3x.webp") center/360px auto repeat;opacity:.2}
@@ -204,10 +204,119 @@ body{background:#171a1f url("https://caser.gg/cdn/fa/images/brands/caser-gg/case
  .reel-card{width:112px;flex-basis:112px;height:132px}.reel-card .weapon{height:72px}
  .case-opening{padding:14px 10px 4px}.case-modal{max-height:96vh}
 }
+
+/* CASER case detail — full game-scene layout */
+.case-detail-view{padding:0!important;min-height:calc(100vh - 68px)!important;background:#11161c!important;color:#eef1f5}
+body.case-detail-open .layout{grid-template-columns:minmax(0,1fr)!important}
+body.case-detail-open .left,body.case-detail-open .subnav{display:none!important}
+body.case-detail-open main{min-width:0!important;padding:0!important;background:#11161c!important}
+body.case-detail-open .top{background:#11161deF!important}
+.case-detail-shell{width:100%;min-height:calc(100vh - 68px);background:#121820}
+.case-detail-toolbar{height:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 clamp(16px,3vw,42px);background:#171d25;border-bottom:1px solid #303945;font-size:10px;font-weight:900;letter-spacing:1px}
+.case-back{padding:8px 0;background:none;color:#d6dbe2;border:0;font-size:10px;font-weight:900;letter-spacing:1px;cursor:pointer}
+.case-back:hover{color:#efb25e}
+.case-detail-breadcrumb{color:#8994a2}.case-detail-breadcrumb span{margin:0 9px;color:#e2a452}.case-detail-breadcrumb b{color:#eef1f5}
+.case-detail-tools{display:flex;gap:14px;color:#9da7b3}.case-detail-tools span:last-child{color:#dca04e}
+.case-scene{position:relative;min-height:410px;overflow:hidden;background:#252d36 url("https://caser.one/cdn/fa/images/header/headerBG.webp") center 47%/cover no-repeat}
+.case-scene:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,12,17,.82) 0%,rgba(8,12,17,.42) 50%,rgba(8,12,17,.22) 100%),linear-gradient(0deg,rgba(10,15,21,.88),transparent 38%);z-index:0}
+.case-scene:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.018) 4px),radial-gradient(ellipse at 50% 44%,transparent 18%,rgba(0,0,0,.25) 100%);pointer-events:none}
+.case-scene-content{position:relative;z-index:1;min-height:365px;display:grid;grid-template-columns:minmax(240px,.8fr) minmax(300px,1.2fr);align-items:center;max-width:1440px;margin:0 auto;padding:32px clamp(24px,7vw,100px) 48px;gap:28px}
+.case-scene-info{max-width:380px;text-shadow:0 2px 12px #000b}
+.case-scene-kicker{display:block;color:#e7a957;font-size:10px;font-weight:950;letter-spacing:2px;margin-bottom:10px}
+.case-scene-info h1{font-size:clamp(28px,4vw,46px);line-height:1.02;font-weight:950;margin:0 0 13px;color:#fff;text-transform:uppercase;text-shadow:0 3px 18px #000d}
+.case-scene-price{font-size:14px;color:#f2c06d;font-weight:900;letter-spacing:.8px;margin-bottom:18px}
+.case-open-cta{min-width:190px;height:45px;padding:0 22px;border:1px solid #f0b257;background:linear-gradient(180deg,#d89a43,#a96524);color:#17191d;border-radius:2px;font-size:12px;font-weight:950;letter-spacing:1px;box-shadow:0 5px 22px #0008;cursor:pointer}
+.case-open-cta:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.case-scene-object{height:270px;display:flex;align-items:center;justify-content:center;position:relative;perspective:900px}
+.case-scene-object img{position:relative;z-index:1;max-width:min(82%,440px);max-height:260px;object-fit:contain;filter:drop-shadow(0 28px 22px #000c);transform:rotateY(-10deg) rotateZ(-3deg);animation:caseCrateIdle 5s ease-in-out infinite}
+@keyframes caseCrateIdle{0%,100%{transform:rotateY(-10deg) rotateZ(-3deg) translateY(0)}50%{transform:rotateY(-10deg) rotateZ(-3deg) translateY(-6px)}}
+.case-scene-light{position:absolute;width:320px;height:170px;background:#d08b3d66;filter:blur(65px);border-radius:50%}
+.case-scene-caption{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;padding:12px clamp(16px,3vw,42px);border-top:1px solid #ffffff1d;background:rgba(11,16,22,.62);color:#a9b3bf;font-size:9px;font-weight:900;letter-spacing:1.5px}
+.case-notice{margin-top:13px;max-width:350px;padding:12px 14px;border:1px solid #b87932;background:rgba(19,18,17,.8);color:#ffc36e;font-size:10px;line-height:1.5;font-weight:900;letter-spacing:.4px}
+.case-notice[hidden]{display:none}
+.case-opening-inline{padding:26px clamp(16px,3vw,42px) 20px;background:linear-gradient(180deg,#12171e,#1b222b);border-top:1px solid #3b4652;border-bottom:1px solid #3b4652}
+.case-opening-inline[hidden]{display:none!important}
+.case-opening-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;color:#e5a24d;font-size:11px;font-weight:950;letter-spacing:1.4px}
+.case-opening-heading i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#e9a64d;box-shadow:0 0 12px #e9a64d;margin-right:8px}
+.case-opening-heading small{color:#8996a5;font-size:9px}
+.case-roulette-window{position:relative;width:100%;overflow:hidden;padding:17px 0;background:linear-gradient(180deg,#0b1016,#202a36,#0b1016);border:1px solid #44515f;border-radius:2px}
+.case-roulette-window:before{content:"";position:absolute;z-index:5;left:50%;top:0;bottom:0;width:2px;background:#ffb958;box-shadow:0 0 16px #ffb958}
+.case-roulette-window:after{content:"";position:absolute;z-index:6;top:0;left:calc(50% - 8px);border-left:8px solid transparent;border-right:8px solid transparent;border-top:12px solid #ffb958}
+.case-roulette-window .roulette{display:flex;width:max-content;gap:7px;align-items:stretch;will-change:transform;transform:translate3d(0,0,0)}
+.case-roulette-window .reel-card{width:150px;flex:0 0 150px;height:148px;background:linear-gradient(150deg,#303b49,#171e27)!important;border:1px solid #455363!important;border-bottom:3px solid var(--rarity,#7b8794)!important;border-radius:2px!important}
+.case-roulette-window .reel-card .weapon{height:88px;width:100%;display:flex;align-items:center;justify-content:center}
+.case-roulette-window .reel-card .weapon img{width:100%;height:100%;object-fit:contain}
+.case-roulette-window .reel-card small{font-size:9px;color:#dce2e9;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.case-roulette-window .reel-card.is-winning{outline:2px solid #ffc16b;box-shadow:0 0 26px #f3ad4b66}
+.case-opening-inline p{margin:11px 0 0;text-align:center;color:#9da8b5;font-size:10px}
+.case-contents-section{padding:24px clamp(16px,3vw,42px) 55px;background:#171e27}
+.case-contents-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:16px}
+.case-contents-heading h2{margin:0;font-size:18px;font-weight:950;letter-spacing:1px;color:#edf1f5}
+.case-items-count{color:#a5afbc;font-size:10px;font-weight:900;letter-spacing:1px}
+.case-contents-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.case-content-item{min-width:0;min-height:145px;padding:10px 10px 9px;background:linear-gradient(155deg,#303945,#202832);border:1px solid #3d4958;border-bottom:2px solid #818d9a;display:flex;flex-direction:column;justify-content:space-between}
+.case-content-art{height:88px;display:flex;align-items:center;justify-content:center}
+.case-content-art img{max-width:100%;max-height:85px;object-fit:contain;filter:drop-shadow(0 8px 5px #0008)}
+.case-content-name{font-size:10px;font-weight:800;line-height:1.3;color:#e0e5eb;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.case-content-meta{display:flex;justify-content:space-between;gap:8px;margin-top:8px;color:#aeb7c2;font-size:8px}
+.case-content-meta b{color:#e7b05d;font-size:9px}
+@media(max-width:850px){
+ .case-scene-content{grid-template-columns:1fr 1fr;padding:22px 18px 44px;gap:8px;min-height:310px}
+ .case-scene{min-height:355px}.case-scene-object{height:230px}.case-scene-object img{max-width:100%;max-height:210px}
+ .case-scene-info h1{font-size:28px}.case-detail-toolbar{padding:0 14px}
+ .case-contents-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .case-detail-toolbar{height:44px;gap:8px}.case-detail-breadcrumb{display:none}
+ .case-scene{min-height:330px}.case-scene-content{min-height:290px;padding:22px 14px 44px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .case-scene-info h1{font-size:22px}.case-scene-price{font-size:11px}.case-open-cta{min-width:0;width:100%;height:42px;padding:0 10px;font-size:10px}
+ .case-scene-object{height:190px}.case-scene-object img{max-width:115%;max-height:175px}
+ .case-scene-caption{font-size:7px;padding:10px 12px}
+ .case-contents-section{padding:20px 10px 40px}.case-contents-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+ .case-content-item{min-height:125px;padding:7px}.case-content-art{height:68px}.case-content-art img{max-height:65px}.case-content-name{font-size:8px}
+ .case-opening-heading small{display:none}.case-roulette-window .reel-card{width:108px;flex-basis:108px;height:125px}.case-roulette-window .reel-card .weapon{height:72px}
+}
+
 </style></head><body>
 <header class="top"><div class="brand"><img src="https://caser.one/cdn/fa/icons/header/logo_text_ru.webp" alt="CASER"></div><nav class="nav"><button data-view="inventory">ИНВЕНТАРЬ</button><button data-view="cases">КЕЙСЫ</button><button class="active" data-view="upgrade">АПГРЕЙДЫ</button><button data-view="rewards">НАГРАДЫ</button><button data-view="profile">ПРОФИЛЬ</button></nav><div class="account"><span class="wallet">⬡ <b id="balance">0</b> C</span><button class="plus" id="openDeposit">+</button><button class="avatar" id="avatar" title="Открыть профиль">🥷</button></div></header>
 <div class="layout"><aside class="left"><div class="online">ONLINE <b>◉ LIVE</b></div><div class="feed" id="feed"></div><div class="social">➤　◎　✦</div></aside><main><div class="subnav"><button class="active" data-case-filter="all">ВСЕ</button><button data-case-filter="hot">ГОРЯЧИЕ</button></div>
 <section class="view" id="cases"><div class="eyebrow">ОТКРЫВАЙ И СОБИРАЙ КОЛЛЕКЦИЮ</div><h2 class="heading">АВТОРСКИЕ КЕЙСЫ</h2><div class="case-tabs"><span class="active">ВСЕ КЕЙСЫ</span><span>ИЗБРАННЫЕ</span><span>МОИ КЕЙСЫ</span></div><div class="case-toolbar"><input id="caseSearch" type="search" placeholder="Поиск по названию или автору"><input id="casePriceFrom" type="number" min="0" placeholder="Цена от"><input id="casePriceTo" type="number" min="0" placeholder="Цена до"><select id="caseSort"><option value="popular">По популярности</option><option value="cheap">Сначала дешёвые</option><option value="expensive">Сначала дорогие</option></select></div><div class="grid" id="casegrid"></div><div class="subhead"><h2>ЕЩЁ АВТОРСКИЕ КЕЙСЫ</h2><a class="outline create-case-link" href="https://caser.gg/cis/custom-cases/create" target="_blank" rel="noopener">СОЗДАТЬ СВОЙ КЕЙС ↗</a></div><div class="grid" id="customgrid"></div></section>
+<section class="view case-detail-view" id="caseDetail">
+ <div class="case-detail-shell">
+  <div class="case-detail-toolbar">
+   <button class="case-back" id="caseBack" type="button">← НАЗАД К КЕЙСАМ</button>
+   <div class="case-detail-breadcrumb">КЕЙСЫ <span>/</span> <b id="caseTitle">КЕЙС</b></div>
+   <div class="case-detail-tools"><span>CS2</span><span>● LIVE</span></div>
+  </div>
+  <section class="case-scene" id="caseScene">
+   <div class="case-scene-vignette"></div>
+   <div class="case-scene-content">
+    <div class="case-scene-info">
+     <div class="case-scene-kicker">COUNTER-STRIKE 2 CASE</div>
+     <h1 id="caseSceneTitle">КЕЙС</h1>
+     <div class="case-scene-price" id="casePrice"></div>
+     <button class="case-open-cta" id="spinButton" type="button">ОТКРЫТЬ КЕЙС</button>
+     <div class="case-notice" id="caseNotice" hidden></div>
+    </div>
+    <div class="case-scene-object">
+     <div class="case-scene-light"></div>
+     <img id="caseArtwork" src="" alt="Кейс CS2">
+    </div>
+   </div>
+   <div class="case-scene-caption"><span>СОДЕРЖИМОЕ КЕЙСА</span><span>ПРЕДМЕТЫ CS2</span></div>
+  </section>
+  <section class="case-opening-inline" id="caseOpening" hidden>
+   <div class="case-opening-heading"><span><i></i> ОТКРЫТИЕ КЕЙСА</span><small>СЛЕДИ ЗА ЦЕНТРАЛЬНЫМ УКАЗАТЕЛЕМ</small></div>
+   <div class="case-roulette-window"><div class="roulette" id="roulette"></div></div>
+   <p id="spinHint">Лента останавливается на выпавшем предмете</p>
+  </section>
+  <section class="case-contents-section">
+   <div class="case-contents-heading"><div><span class="case-scene-kicker">DROP POOL</span><h2>ВОЗМОЖНЫЕ ПРЕДМЕТЫ</h2></div><span class="case-items-count" id="caseItemsCount">21 ПРЕДМЕТ</span></div>
+   <div class="case-contents-grid" id="caseContentsGrid"></div>
+  </section>
+ </div>
+</section>
+
 <section class="view upgrade active" id="upgrade"><div class="upgrade-title"><div><div class="eyebrow">CS2 ITEM UPGRADE</div><h2 class="heading">АПГРЕЙД</h2></div><div class="upgrade-status">Выберите ставку и желаемый предмет</div></div><div class="upgrid"><div class="pick"><div class="picktitle">ВАША СТАВКА <span id="fromValue">C 0</span></div><div class="empty" id="fromSlot">Выберите один или несколько предметов</div></div><div class="gauge"><div class="dial" id="upgradeDial"><div class="dial-pointer"></div><div class="dialin"><div><span id="chance">0.00%</span><small>Шанс апгрейда</small></div></div></div><div class="gauge-caption">ВЕРОЯТНОСТЬ УСПЕХА</div><div class="multipliers"><button data-mult="2">x2</button><button data-mult="4">x4</button><button data-mult="8">x8</button><button data-mult="75">x75</button></div><button id="mysteryButton" class="mystery-button" type="button">? MYSTERY UPGRADE</button></div><div class="pick"><div class="picktitle">ЖЕЛАЕМЫЙ ПРЕДМЕТ <span id="toValue">—</span></div><div class="empty" id="toSlot">Выберите предмет из каталога</div></div></div><div class="controls"><div>Баланс: C <b id="upgradeBal">0</b><br><input id="stakeValue" type="number" min="0" step="1" value="0" placeholder="Сумма баланса в ставке" style="width:100%;margin-top:8px;background:#11191a;border:1px solid #40504c;color:white;padding:9px;border-radius:4px"></div><button id="upgradeAction">АПГРЕЙД</button><div>Шанс зависит от стоимости ставки и цели</div></div><div class="panel"><div class="panelhead">МОИ ПРЕДМЕТЫ — выберите предмет для ставки</div><div class="items" id="myItems"></div></div><div class="panel"><div class="panelhead">ЖЕЛАЕМЫЕ ПРЕДМЕТЫ — каталог CASER</div><div class="catalog-filters"><input id="itemSearch" type="search" placeholder="Поиск предмета"><input id="priceFrom" type="number" min="0" placeholder="Цена от"><input id="priceTo" type="number" min="0" placeholder="Цена до"><select id="itemSort"><option value="cheap">Сначала дешёвые</option><option value="expensive">Сначала дорогие</option></select></div><div class="items" id="chooseItems"></div></div><div class="panel"><div class="panelhead">РЕЗУЛЬТАТ АПГРЕЙДА</div><div class="roulette-wrap"><div class="roulette" id="upgradeRoulette"><div class="reel-card"><div class="weapon">CS2</div><small>Результат появится после запуска</small></div></div></div><p id="upgradeResult" class="muted" style="text-align:center;padding:10px">При успехе целевой скин добавляется в инвентарь. При неудаче предмет ставки списывается.</p></div></section>
 <section class="view" id="inventory"><h2 class="heading">МОЙ ИНВЕНТАРЬ</h2><div class="panel"><div class="panelhead">МОИ ПРЕДМЕТЫ <span id="agentName"></span></div><div class="items" id="inventoryItems"></div></div></section><section class="view" id="profile"><h2 class="heading">ПРОФИЛЬ</h2><div class="profile-card"><div class="profile-avatar" id="profileAvatar">🥷</div><div><div class="profile-label">АГЕНТ КЕЙСЕР</div><h2 id="profileName">—</h2><span class="profile-id" id="profileId"></span></div></div><div class="profile-stats"><div><small>БАЛАНС</small><b id="profileBalance">0 C</b></div><div><small>ПРЕДМЕТОВ</small><b id="profileItems">0</b></div><div><small>СТОИМОСТЬ ИНВЕНТАРЯ</small><b id="profileWorth">0 C</b></div></div><div class="panel"><div class="panelhead">АККАУНТ</div><p class="profile-note">Демо-профиль КЕЙСЕР. Данные инвентаря и баланса сохраняются на сервере проекта.</p></div></section><section class="view" id="rewards">
  <h2 class="heading">НАГРАДЫ</h2>
@@ -222,19 +331,6 @@ body{background:#171a1f url("https://caser.gg/cdn/fa/images/brands/caser-gg/case
  </div>
 </section></main></div>
 <div class="modalbg" id="depositModal"><div class="modal"><h2>ПОПОЛНЕНИЕ БАЛАНСА</h2><p>Нажми на точку для начисления внутреннего баланса</p><div class="tap" id="tap">+500 C<small style="font-size:11px">НАЖАТЬ</small></div><h2>C <span id="modalBalance">0</span></h2><p class="muted">Виртуальное начисление, реальные платежи не проводятся.</p><button class="close" id="closeDeposit">ЗАКРЫТЬ</button></div></div>
-<div class="modalbg" id="caseModal"><div class="case-modal">
-  <section class="case-stage" id="caseStage">
-    <div class="case-stage-top"><span>КЕЙСЕР <i>•</i> CS2 CASE OPENING</span><span class="case-stage-live">● LIVE DROP</span></div>
-    <div class="case-stage-content">
-      <div class="case-stage-copy"><div class="case-stage-kicker">ОТКРЫТИЕ КЕЙСА</div><h2 id="caseTitle">ОТКРЫТИЕ КЕЙСА</h2><p id="casePrice" class="case-stage-price"></p><button class="primary case-open-button" id="spinButton">ОТКРЫТЬ КЕЙС</button></div>
-      <div class="case-stage-art"><div class="case-art-glow"></div><img id="caseArtwork" src="" alt="Обложка кейса"></div>
-    </div>
-    <div class="case-stage-bottom"><span>СЛУЧАЙНЫЙ ПРЕДМЕТ ИЗ КОЛЛЕКЦИИ CS2</span><span>РЕЗУЛЬТАТ ПОЯВИТСЯ ПОСЛЕ ОСТАНОВКИ ЛЕНТЫ</span></div>
-  </section>
-  <section class="case-opening" id="caseOpening" hidden><div class="opening-title"><span class="opening-dot"></span> ОТКРЫТИЕ КЕЙСА</div><div class="roulette-wrap"><div class="roulette" id="roulette"></div></div><p class="muted" id="spinHint">Предмет остановится точно под центральным указателем</p></section>
-  <section class="case-preview-wrap" id="casePreview"><div class="case-preview-head"><b>ПРИМЕРЫ СКИНОВ CS2</b><span>ПРЕДМЕТЫ ДЕМО-КОЛЛЕКЦИИ</span></div><div class="case-preview-grid" id="casePreviewGrid"></div></section>
-  <div class="case-modal-footer"><button class="close" id="closeCase">ЗАКРЫТЬ</button></div>
-</div></div>
 <div class="modalbg" id="dropModal"><div class="modal"><div class="eyebrow">РЕЗУЛЬТАТ ОТКРЫТИЯ</div><h2 id="dropTitle">ВАШ ВЫПАВШИЙ ПРЕДМЕТ</h2><div class="result-art" id="dropIcon">✦</div><h3 id="dropName"></h3><p id="dropDesc"></p><button class="primary" id="closeDrop">ЗАБРАТЬ ПРЕДМЕТ</button></div></div><div class="toast" id="toast"></div>
 <script>
 const cases=[["Strogo ( ez )Awp","https://s3.caser.gg/cdn/custom-cases/5094783afc5db63ee8721486e0e67278-6aee5d1e53abe.webp",4.96,"High","06.11.2026",4747469],["Нож с завода за 5₱","https://s3.caser.gg/cdn/custom-cases/d22ca53d890962e83633d2bd52d681ca-6aea59a81bc38.webp",5.1,"High","06.11.2026",5767585],["Банан","https://s3.caser.gg/cdn/custom-cases/16e36584c7e2471e3c8ba89878e88372-6af0e1962bcac.png",87.11,"Medium","08.11.2026",253892],["M4A1-S Farm","https://s3.caser.gg/cdn/custom-cases/677361a5f77796e27ad774cb39df33ba-6aea2b9a1ad02.png",20.27,"Medium","03.11.2026",1935717],["ШУБА","https://s3.caser.gg/cdn/custom-cases/166f4187510fd8bdefa122ca94e75dc7-6ae9a309d33f6.png",34.42,"Medium","03.11.2026",2250386],["bright water farm","https://s3.caser.gg/cdn/custom-cases/9019118ab65801104fb1302a00deef29-6af045592f030.webp",3.88,"High","08.11.2026",368478],["Апгрейд в х10","https://s3.caser.gg/cdn/custom-cases/51b9ab5f866b0d1e899251ac1e822faf-6aec53cb347c7.png",37.45,"High","05.11.2026",418375],["Tape farm","https://s3.caser.gg/cdn/custom-cases/0574810e5c61f807cbb2b7bc9ca66946-6af0a8e022d15.png",57.22,"High","09.11.2026",107951],["ФАРМ ИЗИ АЗИМОВ 4 РУБ","https://s3.caser.gg/cdn/custom-cases/c135855441c5bc2c440372431fbcce2d-6af07b8d89cb9.png",4.11,"High","08.11.2026",321036],["M9 Гамма","https://s3.caser.gg/cdn/custom-cases/f9e4232d5e61408f4939cf7f8f7a7c50-6aecf30b0f9b8.webp",4.21,"High","05.11.2026",741658],["каждый 5 золото","https://s3.caser.gg/cdn/custom-cases/d4d090b2a1dc49ce1f4bd1e9780c5cb9-6ae0d62238354.webp",155,"Medium","27.10.2026",1001935],["баг на окуп","https://s3.caser.gg/cdn/custom-cases/bed4e6fd2425d1b5b6e236db4e0b0e8c-6aee6fa189066.webp",91.56,"Medium","10.11.2026",57115],["Фарм баланса","https://s3.caser.gg/cdn/custom-cases/67d6cc7afbc96bb2534ac98157fecc94-6ae1090e6b376.png",10.84,"Medium","27.10.2026",800720],["5% knife","https://s3.caser.gg/cdn/custom-cases/398ed91c0635e894e448d5c2e5d52d16-6ae1160500235.webp",4.51,"High","02.11.2026",3288897],["Открывать по 4 кейса!","https://s3.caser.gg/cdn/custom-cases/d4578fd6603de170e57f44733faf2268-6ae0d7df1bd9f.png",25.52,"Low","27.10.2026",2008130]];
@@ -250,7 +346,13 @@ function save(){render();persist()}
 function render(){ $("balance").textContent=fmt(data.balance);if($("profileName")){$("profileName").textContent=data.name;$("profileId").textContent="ID "+agentId.slice(0,12);$("profileAvatar").textContent=data.avatar;$("profileBalance").textContent=fmt(data.balance)+" C";$("profileItems").textContent=data.items.length;$("profileWorth").textContent=fmt(data.items.reduce((s,x)=>s+(Number(x[2])||0),0))+" C";}$("modalBalance").textContent=fmt(data.balance);$("upgradeBal").textContent=fmt(data.balance);$("avatar").textContent=data.avatar;$("agentName").textContent="— Агент "+data.name;const imageFor=x=>x?.[4]||(drops.find(d=>d[0]===x?.[0])?.[4]||"");const draw=(id,arr)=>$(id).innerHTML=arr.length?arr.map((x,i)=>'<div class="item" data-index="'+i+'"><div class="weapon">'+(imageFor(x)?'<img src="'+imageFor(x)+'" alt="'+x[0]+'" loading="lazy">':x[1])+'</div><b>'+x[0]+'</b><small>C '+fmt(x[2])+'</small></div>').join(""):'<div style="padding:20px;color:#84918e">Пока нет предметов</div>';draw("myItems",data.items);draw("inventoryItems",data.items);renderChooseItems();refreshUpgrade()}
 function add500(){data.balance+=500;save();toast("Начислено +500 C")}
 $("openDeposit").onclick=()=>$("depositModal").classList.add("show");$("closeDeposit").onclick=()=>$("depositModal").classList.remove("show");$("tap").onclick=add500;
-function show(id){document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));document.querySelectorAll("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===id))}
+function show(id){
+ const isCaseDetail=id==="caseDetail";
+ document.body.classList.toggle("case-detail-open",isCaseDetail);
+ document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));
+ document.querySelectorAll("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===(isCaseDetail?"cases":id)));
+ if(isCaseDetail){const b=document.querySelector('[data-view="cases"]');if(b)b.classList.add("active")}
+}
 document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>show(b.dataset.view));$("avatar").onclick=()=>show("profile");$("rewardsLogin")?.addEventListener("click",()=>toast("Steam-авторизация в демо-версии не подключена"));
 function caseCard(c,i){return '<article class="case" data-case="'+i+'"><div class="caseart"><div class="casebox"><img src="'+c[1]+'" alt="'+c[0]+'" loading="lazy"></div></div><div class="caseinfo"><b>'+c[0]+'</b><span>'+Number(c[2]).toLocaleString("ru-RU",{minimumFractionDigits:2,maximumFractionDigits:2})+' C</span></div><small class="case-quality">'+(c[3]||"")+' · обновлён '+c[4]+'</small><small class="case-opens">'+Number(c[5]).toLocaleString("ru-RU")+' открытий</small></article>'}
 let activeCaseFilter="all";
@@ -274,30 +376,50 @@ function openCase(i){
  const c=cases[i];if(!c)return;
  activeCase=i;
  $("caseTitle").textContent=c[0].toUpperCase();
+ $("caseSceneTitle").textContent=c[0].toUpperCase();
  $("casePrice").textContent="СТОИМОСТЬ ОТКРЫТИЯ  "+fmt(c[2])+" C";
- const art=$("caseArtwork");art.src=c[1];art.alt=c[0];art.style.visibility="visible";
+ const art=$("caseArtwork");
+ art.src=c[1];art.alt=c[0];art.style.visibility="visible";
  art.onerror=()=>{art.style.visibility="hidden"};
- $("caseStage").hidden=false;$("caseOpening").hidden=true;$("casePreview").hidden=false;
- $("casePreviewGrid").innerHTML=drops.slice(0,12).map(d=>'<article class="case-preview-item"><div class="case-preview-image"><img src="'+d[4]+'" alt="'+d[0]+'" loading="lazy"></div><b>'+d[0]+'</b><small>C '+fmt(d[2])+'</small></article>').join("");
- $("roulette").style.transition="none";$("roulette").style.transform="translate3d(0,0,0)";$("roulette").innerHTML="";
- $("spinButton").disabled=false;$("spinButton").textContent="ОТКРЫТЬ КЕЙС";$("spinHint").textContent="Предмет остановится точно под центральным указателем";
- $("caseModal").classList.add("show");
+ $("caseOpening").hidden=true;
+ $("caseScene").hidden=false;
+ $("spinButton").disabled=false;
+ $("spinButton").textContent="ОТКРЫТЬ КЕЙС";
+ $("caseNotice").hidden=true;
+ $("caseNotice").textContent="";
+ $("caseItemsCount").textContent=drops.length+" ПРЕДМЕТОВ";
+ $("caseContentsGrid").innerHTML=drops.map((d,index)=>
+  '<article class="case-content-item"><div class="case-content-art"><img src="'+d[4]+'" alt="'+d[0]+'" loading="lazy"></div><div class="case-content-name">'+d[0]+'</div><div class="case-content-meta"><span>'+String(d[3]||"").toUpperCase()+'</span><b>C '+fmt(d[2])+'</b></div></article>'
+ ).join("");
+ show("caseDetail");
+ window.scrollTo({top:0,behavior:"instant"});
 }
 $("casegrid").addEventListener("click",e=>{const c=e.target.closest("[data-case]");if(c)openCase(+c.dataset.case)});$("customgrid").addEventListener("click",e=>{const c=e.target.closest("[data-case]");if(c)openCase(+c.dataset.case)});
-$("closeCase").onclick=()=>{if(!rolling)$("caseModal").classList.remove("show")};
+
 function spin(){
  if(rolling)return;
  const c=cases[activeCase];if(!c)return;
- if(data.balance<c[2]){$("caseModal").classList.remove("show");$("depositModal").classList.add("show");toast("Недостаточно средств");return}
- rolling=true;data.balance-=c[2];save();
- $("spinButton").disabled=true;$("spinButton").textContent="ОТКРЫВАЕТСЯ…";
- $("spinHint").textContent="Лента набирает скорость — следи за центральным указателем";
- $("caseStage").hidden=true;$("casePreview").hidden=true;$("caseOpening").hidden=false;
+ if(data.balance<c[2]){
+  $("caseNotice").textContent="НЕДОСТАТОЧНО СРЕДСТВ · ПОПОЛНИ БАЛАНС, ЧТОБЫ ОТКРЫТЬ КЕЙС";
+  $("caseNotice").hidden=false;
+  $("depositModal").classList.add("show");
+  return;
+ }
+ rolling=true;
+ data.balance-=c[2];save();
+ $("spinButton").disabled=true;
+ $("spinButton").textContent="ОТКРЫВАЕТСЯ…";
+ $("caseNotice").hidden=true;
+ $("caseScene").hidden=true;
+ $("caseOpening").hidden=false;
+ $("spinHint").textContent="Лента набирает скорость…";
  const winningIndex=48;
  const list=Array.from({length:55},()=>drops[Math.floor(Math.random()*drops.length)]);
- winningDrop=drops[Math.floor(Math.random()*drops.length)];list[winningIndex]=winningDrop;
+ winningDrop=drops[Math.floor(Math.random()*drops.length)];
+ list[winningIndex]=winningDrop;
  const reel=$("roulette"),wrap=reel.parentElement;
- reel.style.transition="none";reel.style.transform="translate3d(0,0,0)";
+ reel.style.transition="none";
+ reel.style.transform="translate3d(0,0,0)";
  reel.innerHTML=list.map((item,index)=>reelCard(item,index)).join("");
  void reel.offsetWidth;
  const target=reel.querySelector('[data-reel-index="'+winningIndex+'"]');
@@ -307,31 +429,35 @@ function spin(){
   if(fallbackTimer)clearTimeout(fallbackTimer);
   reel.removeEventListener("transitionend",onTransitionEnd);
   if(target)target.classList.add("is-winning");
-  rolling=false;data.items.unshift(winningDrop);save();
-  $("caseModal").classList.remove("show");
+  rolling=false;
+  data.items.unshift(winningDrop);save();
+  $("caseOpening").hidden=true;
+  $("caseScene").hidden=false;
+  $("spinButton").disabled=false;
+  $("spinButton").textContent="ОТКРЫТЬ ЕЩЁ РАЗ";
+  $("caseNotice").hidden=true;
   $("dropTitle").textContent="КЕЙС ОТКРЫТ";
   $("dropIcon").innerHTML=winningDrop[4]?'<img src="'+winningDrop[4]+'" style="width:190px;max-width:100%;height:120px;object-fit:contain" alt="">':"✦";
   $("dropName").textContent=winningDrop[0];
   $("dropDesc").textContent="Стоимость предмета: C "+fmt(winningDrop[2]);
   $("dropModal").classList.add("show");
-  $("spinButton").disabled=false;$("spinButton").textContent="ОТКРЫТЬ КЕЙС";
  };
  const onTransitionEnd=event=>{if(event.target===reel&&event.propertyName==="transform")finish()};
- if(!target||!wrap){finish();return}
- const targetRect=target.getBoundingClientRect(),wrapRect=wrap.getBoundingClientRect();
- const targetCenter=targetRect.left+targetRect.width/2;
- const viewportCenter=wrapRect.left+wrap.clientWidth/2;
+ if(!target||!wrap){rolling=false;$("spinButton").disabled=false;return}
+ const cardRect=target.getBoundingClientRect(),wrapRect=wrap.getBoundingClientRect();
+ const desired=(cardRect.left+cardRect.width/2)-(wrapRect.left+wrap.clientWidth/2);
  const maxTranslate=Math.max(0,reel.scrollWidth-wrap.clientWidth);
- const translate=Math.max(0,Math.min(targetCenter-viewportCenter,maxTranslate));
+ const translate=Math.max(0,Math.min(desired,maxTranslate));
  const duration=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches?0:7200;
  reel.addEventListener("transitionend",onTransitionEnd);
- fallbackTimer=setTimeout(finish,duration+1200);
+ fallbackTimer=setTimeout(finish,duration+1300);
  requestAnimationFrame(()=>requestAnimationFrame(()=>{
   reel.style.transition=duration===0?"none":"transform "+duration+"ms cubic-bezier(.08,.72,.12,1)";
   reel.style.transform="translate3d(-"+translate+"px,0,0)";
   if(duration===0)setTimeout(finish,50);
  }));
 }
+$("caseBack").onclick=()=>{if(!rolling)show("cases")};
 $("spinButton").onclick=spin;$("closeDrop").onclick=()=>$("dropModal").classList.remove("show");
 let selectedTarget=null,upgradeBusy=false,selectedItems=[],upgradeMultiplier=2,mysteryMode=false;
 function upgradeChance(stake,targetPrice){if(stake<=0||targetPrice<=0)return 0;return Math.min(95,95*stake/targetPrice);}
@@ -402,5 +528,5 @@ $("upgradeAction").onclick=()=>{
   upgradeBusy=false;$("upgradeAction").disabled=false;save();renderChooseItems();refreshUpgrade();dial.classList.remove("spinning");
  },4700);
 };
-render();load();show("upgrade");
+render();load();show("cases");
 </script><footer class="site-footer">CASER • Визуальная демо-версия • Не связана с официальными аккаунтами и торговлей предметами</footer></body></html>
