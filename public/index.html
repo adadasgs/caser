@@ -1058,6 +1058,15 @@ body:after{background:linear-gradient(180deg,rgba(8,11,16,.52),rgba(8,11,16,.82)
 #upgrade .upgradeResult{min-height:24px}
 @media(max-width:900px){#upgrade .upgrade-workspace{grid-template-columns:minmax(0,1fr) minmax(220px,260px) minmax(0,1fr)!important;gap:8px!important}#upgrade .dial{width:210px!important;height:210px!important}#upgrade .upgrade-controls{grid-template-columns:1fr 1fr!important}#upgrade .preset-box{grid-column:1/-1}}
 @media(max-width:680px){#upgrade .upgrade-workspace{grid-template-columns:1fr!important}#upgrade .gauge{grid-row:1;padding:20px 0!important}#upgrade .from-pick,#upgrade .to-pick{min-height:170px!important}#upgrade .upgrade-controls{grid-template-columns:1fr!important}#upgrade .upgrade-lists{grid-template-columns:1fr!important}#upgrade .preset-box{grid-column:auto}}
+
+.case-roulette-stack{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;width:100%;max-height:650px;overflow:auto;padding:2px 4px 8px}
+.case-roulette-stack.multi{grid-template-columns:repeat(2,minmax(0,1fr))}
+.case-roulette-lane{min-width:0;padding:7px;background:linear-gradient(180deg,#151e28,#0c1219);border:1px solid #344251}
+.case-roulette-label{margin:0 0 6px 4px;color:#aab6c4;font-size:9px;font-weight:950;letter-spacing:1px}
+.case-roulette-lane .case-roulette-window{padding:12px 0!important}
+.case-roulette-lane .reel-card{width:126px!important;flex-basis:126px!important;height:126px!important}
+.case-roulette-lane .reel-card .weapon{height:72px!important}
+@media(max-width:760px){.case-roulette-stack.multi{grid-template-columns:1fr}.case-roulette-stack{max-height:540px}.case-roulette-lane .reel-card{width:110px!important;flex-basis:110px!important}}
 </style></head><body>
 <header class="top"><div class="brand"><img src="https://caser.one/cdn/fa/icons/header/logo_text_ru.webp" alt="CASER"></div><nav class="nav"><button data-view="inventory">ИНВЕНТАРЬ</button><button data-view="cases">КЕЙСЫ</button><button class="active" data-view="upgrade">АПГРЕЙДЫ</button><button data-view="rewards">НАГРАДЫ</button><button data-view="profile">ПРОФИЛЬ</button></nav><div class="account"><span class="wallet">⬡ <b id="balance">0</b> C</span><button class="plus" id="openDeposit">+</button><button class="avatar" id="avatar" title="Открыть профиль">🥷</button></div></header>
 <div class="layout"><aside class="left"><div class="online">ONLINE <b>—</b></div><div class="sidebar-tabs"><button class="active" type="button">▦</button><button type="button">♨</button></div><div class="feed" id="feed"></div><div class="social">➤　◎　✦</div></aside><main><div class="subnav" id="caseSubnav"><button class="subnav-search" id="caseSearchToggle" type="button" aria-label="Поиск кейсов">⌕</button><input id="caseSearch" class="case-quick-search" type="search" placeholder="Поиск кейсов" hidden><button class="active" data-case-filter="all">ВСЕ КЕЙСЫ</button><button data-case-filter="authors">АВТОРСКИЕ КЕЙСЫ</button></div>
@@ -1110,7 +1119,7 @@ body:after{background:linear-gradient(180deg,rgba(8,11,16,.52),rgba(8,11,16,.82)
    <div class="case-scene-caption"><span>СОДЕРЖИМОЕ КЕЙСА</span><span>ПРЕДМЕТЫ CS2</span></div>
   <section class="case-opening-inline" id="caseOpening" hidden>
    <div class="case-opening-heading"><span><i></i> ОТКРЫТИЕ КЕЙСА</span><small>СЛЕДИ ЗА ЦЕНТРАЛЬНЫМ УКАЗАТЕЛЕМ</small></div>
-   <div class="case-roulette-window"><div class="roulette" id="roulette"></div></div>
+   <div class="case-roulette-stack" id="rouletteStack"></div>
    <p id="spinHint">Лента останавливается на выпавшем предмете</p>
   </section>
   </section>
@@ -1320,30 +1329,39 @@ function spin(quick=false){
  if(quick){finish();return}
  $("caseScene").hidden=false;$("caseOpening").hidden=false;
  $("spinHint").textContent=count===1?"Лента набирает скорость…":"Открываем "+count+" кейса · показываем последний результат";
+ const stack=$("rouletteStack");
+ if(!stack){finish();return}
+ stack.classList.toggle("multi",count>2);
  const winningIndex=48;
- const list=Array.from({length:55},()=>drops[Math.floor(Math.random()*drops.length)]);
- list[winningIndex]=winningDrop;
- const reel=$("roulette"),wrap=reel.parentElement;
- reel.style.transition="none";reel.style.transform="translate3d(0,0,0)";
- reel.innerHTML=list.map((item,index)=>reelCard(item,index)).join("");
- void reel.offsetWidth;
- const target=reel.querySelector('[data-reel-index="'+winningIndex+'"]');
- if(!target||!wrap){finish();return}
- const cardRect=target.getBoundingClientRect(),wrapRect=wrap.getBoundingClientRect();
- const desired=(cardRect.left+cardRect.width/2)-(wrapRect.left+wrap.clientWidth/2);
- const maxTranslate=Math.max(0,reel.scrollWidth-wrap.clientWidth);
- const translate=Math.max(0,Math.min(desired,maxTranslate));
+ stack.innerHTML=wins.map((win,reelIndex)=>{
+  const list=Array.from({length:55},()=>drops[Math.floor(Math.random()*drops.length)]);
+  list[winningIndex]=win;
+  return '<div class="case-roulette-lane"><div class="case-roulette-label">КЕЙС '+(reelIndex+1)+' / '+count+'</div><div class="case-roulette-window"><div class="roulette" id="roulette-'+reelIndex+'">'+list.map((item,index)=>reelCard(item,index)).join("")+'</div></div></div>';
+ }).join("");
  const duration=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches?0:7200;
- let finished=false,fallbackTimer=null;
- const done=()=>{if(finished)return;finished=true;if(fallbackTimer)clearTimeout(fallbackTimer);reel.removeEventListener("transitionend",onTransitionEnd);finish(target)};
- const onTransitionEnd=event=>{if(event.target===reel&&event.propertyName==="transform")done()};
- reel.addEventListener("transitionend",onTransitionEnd);
- fallbackTimer=setTimeout(done,duration+1300);
- requestAnimationFrame(()=>requestAnimationFrame(()=>{
-  reel.style.transition=duration===0?"none":"transform "+duration+"ms cubic-bezier(.08,.72,.12,1)";
-  reel.style.transform="translate3d(-"+translate+"px,0,0)";
-  if(duration===0)setTimeout(done,50);
+ const reels=[...stack.querySelectorAll(".roulette")];
+ const animations=reels.map(reel=>new Promise(resolve=>{
+  const wrap=reel.parentElement;
+  reel.style.transition="none";reel.style.transform="translate3d(0,0,0)";
+  void reel.offsetWidth;
+  const target=reel.querySelector('[data-reel-index="'+winningIndex+'"]');
+  if(!target||!wrap){resolve();return}
+  const cardRect=target.getBoundingClientRect(),wrapRect=wrap.getBoundingClientRect();
+  const desired=(cardRect.left+cardRect.width/2)-(wrapRect.left+wrap.clientWidth/2);
+  const maxTranslate=Math.max(0,reel.scrollWidth-wrap.clientWidth);
+  const translate=Math.max(0,Math.min(desired,maxTranslate));
+  let finished=false,timer=null;
+  const done=()=>{if(finished)return;finished=true;if(timer)clearTimeout(timer);reel.removeEventListener("transitionend",onEnd);target.classList.add("is-winning");resolve()};
+  const onEnd=event=>{if(event.target===reel&&event.propertyName==="transform")done()};
+  reel.addEventListener("transitionend",onEnd);
+  timer=setTimeout(done,duration+1300);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+   reel.style.transition=duration===0?"none":"transform "+(duration+reelIndex*90)+"ms cubic-bezier(.08,.72,.12,1)";
+   reel.style.transform="translate3d(-"+translate+"px,0,0)";
+   if(duration===0)setTimeout(done,50);
+  }));
  }));
+ Promise.all(animations).then(()=>finish());
 }
 
 $("caseBack").onclick=()=>{if(!rolling)show("cases")};
