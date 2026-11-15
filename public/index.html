@@ -414,7 +414,7 @@ body.case-detail-open .top{background:#11161deF!important}
   inset:0;
   background:
     linear-gradient(180deg,rgba(13,18,24,.78),rgba(13,18,24,.91)),
-    url("https://caser.one/cdn/fa/images/header/headerBG.webp") center 48%/cover no-repeat;
+    url("https://cdn.playcs.gg/img/maps/de_mirage.webp") center 48%/cover no-repeat;
   filter:none;
   transform:none;
   pointer-events:none;
@@ -455,7 +455,7 @@ body:before{
  inset:-12px;
  z-index:-2;
  pointer-events:none;
- background:url("https://caser.one/cdn/fa/images/header/headerBG.webp") center 44%/cover no-repeat;
+ background:url("https://cdn.playcs.gg/img/maps/de_mirage.webp") center 44%/cover no-repeat;
  filter:brightness(.42) saturate(.92);
  transform:scale(1.025);
 }
@@ -896,6 +896,45 @@ body:before{filter:brightness(.42) saturate(.92)!important;transform:none!import
 body:after{filter:none!important;backdrop-filter:none!important}
 .top,.left,.subnav,.case-detail-toolbar,.case-opening-inline,.case-roulette-window{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 .case-opening-inline:before{filter:none!important;transform:none!important}
+
+/* Case-opening layout rebuilt around the CS2 map scene */
+.case-scene{
+ min-height:calc(100vh - 122px)!important;
+ display:flex!important;flex-direction:column!important;
+ background:#111923 url("https://cdn.playcs.gg/img/maps/de_mirage.webp") center 44%/cover no-repeat!important;
+}
+.case-scene:before{background:linear-gradient(180deg,rgba(5,9,14,.30),rgba(5,9,14,.54) 54%,rgba(5,9,14,.84))!important}
+.case-scene-content{
+ flex:1;min-height:0!important;width:100%;max-width:1200px!important;
+ display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+ gap:8px!important;padding:24px 20px 12px!important;
+}
+.case-scene-object{order:1!important;width:100%;height:clamp(230px,36vh,390px)!important;flex:none!important}
+.case-scene-object img{max-width:min(68vw,480px)!important;max-height:clamp(220px,34vh,370px)!important;filter:drop-shadow(0 28px 24px #000e)!important}
+.case-scene-info{order:2!important;max-width:680px!important;width:100%!important;text-align:center!important;margin:0 auto!important}
+.case-scene-info h1{font-size:clamp(25px,3vw,38px)!important;margin:0 0 8px!important}
+.case-scene-kicker{margin-bottom:6px!important}
+.case-scene-price{margin-bottom:12px!important}
+.case-open-cta{min-width:230px!important;height:48px!important}
+.case-opening-inline{
+ position:relative!important;z-index:4!important;flex:none!important;width:100%!important;
+ margin:0!important;padding:0 clamp(12px,3vw,38px) 48px!important;
+ background:transparent!important;border:0!important;
+}
+.case-opening-inline:before{display:none!important}
+.case-opening-heading{color:#f0b45e!important;text-shadow:0 2px 8px #000!important}
+.case-roulette-window{background:linear-gradient(180deg,rgba(6,10,15,.88),rgba(17,25,36,.94),rgba(6,10,15,.88))!important;backdrop-filter:none!important}
+.case-scene-caption{z-index:5!important;background:rgba(5,9,14,.72)!important}
+body:before{filter:brightness(.42) saturate(.92)!important;transform:none!important}
+@media(max-width:760px){
+ .case-scene{min-height:calc(100vh - 103px)!important}
+ .case-scene-content{padding:12px 12px 8px!important}
+ .case-scene-object{height:clamp(180px,29vh,270px)!important}
+ .case-scene-object img{max-height:clamp(175px,28vh,260px)!important}
+ .case-opening-inline{padding:0 9px 45px!important}
+ .case-opening-heading small{display:none}
+ .case-roulette-window .reel-card{width:112px!important;flex-basis:112px!important;height:125px!important}
+}
 </style></head><body>
 <header class="top"><div class="brand"><img src="https://caser.one/cdn/fa/icons/header/logo_text_ru.webp" alt="CASER"></div><nav class="nav"><button data-view="inventory">ИНВЕНТАРЬ</button><button data-view="cases">КЕЙСЫ</button><button class="active" data-view="upgrade">АПГРЕЙДЫ</button><button data-view="rewards">НАГРАДЫ</button><button data-view="profile">ПРОФИЛЬ</button></nav><div class="account"><span class="wallet">⬡ <b id="balance">0</b> C</span><button class="plus" id="openDeposit">+</button><button class="avatar" id="avatar" title="Открыть профиль">🥷</button></div></header>
 <div class="layout"><aside class="left"><div class="online">ONLINE <b>—</b></div><div class="sidebar-tabs"><button class="active" type="button">▦</button><button type="button">♨</button></div><div class="feed" id="feed"></div><div class="social">➤　◎　✦</div></aside><main><div class="subnav" id="caseSubnav"><button class="subnav-search" id="caseSearchToggle" type="button" aria-label="Поиск кейсов">⌕</button><input id="caseSearch" class="case-quick-search" type="search" placeholder="Поиск кейсов" hidden><button class="active" data-case-filter="all">ВСЕ КЕЙСЫ</button><button data-case-filter="authors">АВТОРСКИЕ КЕЙСЫ</button></div>
@@ -933,11 +972,11 @@ body:after{filter:none!important;backdrop-filter:none!important}
     </div>
    </div>
    <div class="case-scene-caption"><span>СОДЕРЖИМОЕ КЕЙСА</span><span>ПРЕДМЕТЫ CS2</span></div>
-  </section>
   <section class="case-opening-inline" id="caseOpening" hidden>
    <div class="case-opening-heading"><span><i></i> ОТКРЫТИЕ КЕЙСА</span><small>СЛЕДИ ЗА ЦЕНТРАЛЬНЫМ УКАЗАТЕЛЕМ</small></div>
    <div class="case-roulette-window"><div class="roulette" id="roulette"></div></div>
    <p id="spinHint">Лента останавливается на выпавшем предмете</p>
+  </section>
   </section>
   <section class="case-contents-section">
    <div class="case-contents-heading"><div><span class="case-scene-kicker">DROP POOL</span><h2>ВОЗМОЖНЫЕ ПРЕДМЕТЫ</h2></div><span class="case-items-count" id="caseItemsCount">21 ПРЕДМЕТ</span></div>
@@ -1118,7 +1157,6 @@ function spin(){
  $("spinButton").disabled=true;
  $("spinButton").textContent="ОТКРЫВАЕТСЯ…";
  $("caseNotice").hidden=true;
- $("caseScene").hidden=true;
  $("caseOpening").hidden=false;
  $("spinHint").textContent="Лента набирает скорость…";
  const winningIndex=48;
@@ -1333,4 +1371,4 @@ $("upgradeAction").onclick=()=>{
  },4700);
 };
 render();load();show("cases");loadSkinCatalog();
-</script><footer class="site-footer">CASER • Визуальная демо-версия • Не связана с официальными аккаунтами и торговлей предметами</footer></body></html>
+</script><footer class="site-footer">CASER • Виртуальный режим • Предметы и баланс не передаются в Steam</footer></body></html>
