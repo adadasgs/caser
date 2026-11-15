@@ -853,6 +853,37 @@ body.case-detail-open main{padding:0!important}
  .upgrade-lists .item .weapon{height:55px!important}
 }
 
+
+/* Clarity pass: remove blur/translucent glass that made the whole UI look pixelated */
+html,body{image-rendering:auto!important;-webkit-font-smoothing:antialiased!important;text-rendering:optimizeLegibility!important}
+body:before{filter:brightness(.42) saturate(.92)!important;transform:none!important;background-size:cover!important;background-position:center center!important}
+body:after{backdrop-filter:none!important;filter:none!important}
+.top,.left,.subnav,.panel,.pick,.case-detail-toolbar,.case-contents-section,
+#upgrade .pick,.upgrade-lists .panel,.case-opening-inline,.case-roulette-window{
+ backdrop-filter:none!important;-webkit-backdrop-filter:none!important
+}
+.top{background:rgba(17,22,30,.97)!important}
+.left{background:rgba(12,17,24,.96)!important}
+.subnav{background:rgba(16,22,30,.96)!important}
+.panel,.pick{background:rgba(20,27,36,.97)!important}
+#upgrade .pick{background:rgba(25,31,38,.96)!important;border:1px solid rgba(180,192,205,.25)!important}
+#upgrade .empty{color:#e3e8ee!important}
+.upgrade-lists .panel{background:#171e27!important;border:1px solid #3b4654!important}
+.upgrade-lists .panelhead{background:#222c38!important;color:#f5f7fa!important}
+.upgrade-lists .item{
+ background:linear-gradient(155deg,#303d4b,#202a36)!important;
+ color:#f4f6f8!important;border:1px solid #455365!important;
+ border-bottom:3px solid var(--rarity,#8fc4d6)!important;
+}
+.upgrade-lists .item b{color:#f5f7fa!important}
+.upgrade-lists .item .item-price{background:#111923!important;color:#fff!important;border:1px solid #647286!important}
+.upgrade-lists .item .item-wear{color:#d9e2ed!important}
+.upgrade-lists .item .weapon img{filter:none!important;image-rendering:auto!important}
+.upgrade-lists .item.selected{background:#28463d!important;border-color:#20c98e!important}
+.case-scene:before,.case-opening-inline:before{filter:none!important;transform:none!important}
+.case-roulette-window{background:rgba(10,15,21,.96)!important}
+.case-content-item{filter:none!important;backdrop-filter:none!important}
+
 </style></head><body>
 <header class="top"><div class="brand"><img src="https://caser.one/cdn/fa/icons/header/logo_text_ru.webp" alt="CASER"></div><nav class="nav"><button data-view="inventory">ИНВЕНТАРЬ</button><button data-view="cases">КЕЙСЫ</button><button class="active" data-view="upgrade">АПГРЕЙДЫ</button><button data-view="rewards">НАГРАДЫ</button><button data-view="profile">ПРОФИЛЬ</button></nav><div class="account"><span class="wallet">⬡ <b id="balance">0</b> C</span><button class="plus" id="openDeposit">+</button><button class="avatar" id="avatar" title="Открыть профиль">🥷</button></div></header>
 <div class="layout"><aside class="left"><div class="online">ONLINE <b><i>◉</i> 2 214</b></div><div class="sidebar-tabs"><button class="active" type="button">▦</button><button type="button">♨</button></div><div class="feed" id="feed"></div><div class="social">➤　◎　✦</div></aside><main><div class="subnav" id="caseSubnav"><button class="subnav-search" id="caseSearchToggle" type="button" aria-label="Поиск кейсов">⌕</button><input id="caseSearch" class="case-quick-search" type="search" placeholder="Поиск кейсов" hidden><button class="active" data-case-filter="all">ВСЕ КЕЙСЫ</button><button data-case-filter="authors">АВТОРСКИЕ КЕЙСЫ</button></div>
