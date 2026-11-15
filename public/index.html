@@ -1150,6 +1150,8 @@ function reelCard(d,index){return '<div class="reel-card '+d[3]+'"'+(Number.isIn
 function openCase(i,source="custom"){
  const c=source==="featured"?featuredCases[i]:cases[i];if(!c)return;
  activeCase=i;activeCaseSource=source;activeCaseData=c;
+ selectedCaseCount=1;document.querySelectorAll("[data-case-count]").forEach(x=>x.classList.toggle("active",x.dataset.caseCount==="1"));
+ $("spinButton").disabled=false;$("quickSpinButton").disabled=false;$("spinButton").textContent="ОТКРЫТЬ КЕЙС";$("quickSpinButton").textContent="БЫСТРО · 1";
  $("caseTitle").textContent=c[0].toUpperCase();$("caseSceneTitle").textContent=c[0].toUpperCase();
  $("casePrice").textContent="СТОИМОСТЬ ОТКРЫТИЯ  "+fmt(c[2])+" C";
  const art=$("caseArtwork"),object=art.parentElement;
