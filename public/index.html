@@ -1088,7 +1088,6 @@ body:after{background:linear-gradient(180deg,rgba(8,11,16,.52),rgba(8,11,16,.82)
 .case-scene:before{background:linear-gradient(90deg,rgba(8,12,17,.76),rgba(8,12,17,.28) 60%,rgba(8,12,17,.38)),linear-gradient(0deg,rgba(10,15,21,.85),transparent 42%)!important}
 @media(max-width:1100px){#featuredCasesSection .featured-cases-grid,#authorsSection .grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
 @media(max-width:760px){#featuredCasesSection .featured-cases-grid,#authorsSection .grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}#authorsSection .case-toolbar{grid-template-columns:1fr 1fr!important}#authorsSection .case-toolbar input:first-child{grid-column:1/-1!important}}
-</style>
 /* CASER.one reference rebuild — first viewport */
 :root{--caser-blue:#53b7e7;--caser-green:#19c98a;--caser-dark:#292e31}
 html,body{min-height:100%;background:#62696d!important}
@@ -1208,6 +1207,60 @@ body:after{background:rgba(47,52,55,.30)!important;backdrop-filter:none!importan
  .author-head h2{font-size:18px!important}
  .create-case-link{font-size:9px!important;padding:0 7px!important}
 }
+
+/* Upgrade view tuned to CASER screenshot reference */
+#upgrade.upgrade{padding:0 32px 50px 76px!important}
+#upgrade .upgrade-workspace{display:grid!important;grid-template-columns:minmax(0,1fr) 374px minmax(0,1fr)!important;gap:0!important;align-items:center!important;min-height:370px!important;margin:0!important}
+#upgrade .from-pick,#upgrade .to-pick{width:100%!important;height:370px!important;min-height:370px!important;border:0!important;border-radius:0!important;background:rgba(50,54,55,.30)!important;box-shadow:none!important;backdrop-filter:none!important;display:grid!important;place-items:center!important}
+#upgrade .picktitle{display:none!important}
+#upgrade .empty{height:auto!important;min-height:0!important;color:rgba(238,241,241,.58)!important;font-size:12px!important;line-height:1.55!important;background:none!important;padding:20px!important}
+#upgrade .gauge{height:370px!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important}
+#upgrade .dial{width:310px!important;height:310px!important;border:0!important;border-radius:50%!important;background:radial-gradient(circle,#1b1d1e 0 61%,#343738 62% 67%,#1c1e1f 68% 100%)!important;box-shadow:0 0 0 1px rgba(233,238,237,.22),0 7px 24px rgba(0,0,0,.42)!important}
+#upgrade .dial:before{inset:18px!important;border-radius:50%!important;background:conic-gradient(from 90deg,#f28a00 0 var(--chance,50%),#191b1c var(--chance,50%) 100%)!important;-webkit-mask:radial-gradient(circle,transparent 0 66%,#000 67% 100%)!important;mask:radial-gradient(circle,transparent 0 66%,#000 67% 100%)!important;transform:none!important}
+#upgrade .dial:after{inset:-12px!important;background:repeating-conic-gradient(from 0deg,rgba(240,243,241,.72) 0deg .7deg,transparent .9deg 4.5deg)!important;-webkit-mask:radial-gradient(circle,transparent 0 82%,#000 83% 88%,transparent 89%)!important;mask:radial-gradient(circle,transparent 0 82%,#000 83% 88%,transparent 89%)!important}
+#upgrade .dialin{inset:22%!important;width:auto!important;height:auto!important;border:1px solid rgba(230,235,234,.16)!important;background:radial-gradient(circle at 50% 30%,#333637,#17191a 75%)!important;box-shadow:inset 0 0 28px #0009,0 0 0 5px rgba(255,255,255,.035)!important}
+#upgrade .dialin .dial-logo{font-size:44px!important;color:#ed8500!important;text-shadow:0 0 22px #ed850066!important}
+#upgrade .dial-pointer{left:calc(50% - 13px)!important;bottom:-11px!important;border-left:13px solid transparent!important;border-right:13px solid transparent!important;border-bottom:33px solid #ffad17!important;z-index:9!important}
+#upgrade .dial-mark{color:rgba(235,239,237,.34)!important}
+#upgrade .chance-readout{margin-top:8px!important;min-height:42px!important}
+#upgrade .chance-readout strong{font-size:29px!important;color:#f4f5f4!important}
+#upgrade .chance-readout small{font-size:10px!important;color:#f1f2f1!important;text-transform:none!important;letter-spacing:0!important}
+#upgrade .upgrade-controls{display:grid!important;grid-template-columns:minmax(0,1fr) 340px minmax(0,1fr)!important;gap:18px!important;align-items:center!important;height:55px!important;min-height:55px!important;margin-top:17px!important;padding:0!important;background:transparent!important;border:0!important}
+#upgrade .balance-box{height:55px!important;min-width:0!important;padding:7px 10px!important;background:rgba(60,64,65,.60)!important;border:0!important;border-radius:0!important;color:#f0f2f2!important}
+#upgrade .balance-head{font-size:11px!important;color:#f0f2f2!important}
+#upgrade .balance-head b{font-size:11px!important}
+#upgrade .balance-range-row{display:flex!important;align-items:center!important;gap:8px!important}
+#upgrade .balance-range-row input[type=range]{height:12px!important}
+#upgrade .balance-range-row input[type=number]{width:48px!important;background:rgba(30,33,34,.55)!important;border:0!important;color:#fff!important}
+#upgrade .balance-minmax{font-size:9px!important;color:#c4cbcc!important}
+#upgrade .action-box{height:55px!important;display:flex!important;align-items:stretch!important}
+#upgrade .upgrade-spin-btn{width:100%!important;max-width:none!important;height:55px!important;min-height:55px!important;margin:0!important;border:2px solid rgba(24,28,29,.72)!important;border-radius:2px!important;background:rgba(82,87,88,.68)!important;color:#aeb4b5!important;box-shadow:none!important;font-size:21px!important}
+#upgrade .upgrade-spin-btn:disabled{opacity:.65!important}
+#upgrade .preset-box{height:55px!important;display:flex!important;flex-wrap:nowrap!important;justify-content:stretch!important;gap:0!important;padding:0!important;background:rgba(60,64,65,.65)!important;border:0!important;border-radius:0!important}
+#upgrade .preset-box button{flex:1 1 0!important;min-width:0!important;padding:0 7px!important;background:transparent!important;color:#edf0f0!important;border:0!important;border-left:1px solid rgba(20,25,26,.45)!important;border-radius:0!important;font-size:12px!important}
+#upgrade .preset-box .mystery-button{flex:0 0 62px!important;background:#0cad77!important;color:#fff!important;font-size:23px!important;border-left:0!important;box-shadow:inset 0 0 0 2px rgba(0,0,0,.16)!important}
+#upgrade .upgrade-lists{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:16px!important;margin-top:16px!important}
+#upgrade .upgrade-lists>.panel{min-width:0!important;min-height:360px!important;background:rgba(58,62,63,.46)!important;border:0!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:none!important}
+#upgrade .upgrade-lists .panelhead{min-height:55px!important;height:55px!important;padding:0 16px!important;display:flex!important;align-items:center!important;gap:10px!important;background:rgba(48,52,53,.62)!important;border-bottom:1px solid rgba(20,23,24,.3)!important;color:#f0f2f2!important;font-size:14px!important}
+#upgrade .upgrade-lists .panelhead .panel-sort{margin-left:auto!important}
+#upgrade .upgrade-lists .items{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:7px!important;padding:9px!important}
+#upgrade .upgrade-lists .item{min-width:0!important;padding:8px 6px!important;background:rgba(118,124,125,.52)!important;border:0!important;border-bottom:3px solid var(--rarity,#b7c1c7)!important;border-radius:0!important}
+#upgrade .upgrade-lists .item .weapon{height:94px!important}
+#upgrade .upgrade-lists .item .weapon img{height:88px!important;object-fit:contain!important}
+#upgrade .upgrade-lists .item b{font-size:10px!important;color:#f3f4f4!important}
+#upgrade .upgrade-lists .item small{font-size:10px!important;color:#edf0f0!important}
+#upgrade .catalog-head-tools{display:flex!important;align-items:center!important;gap:5px!important;margin-left:auto!important;color:#e7ebeb!important}
+#upgrade .catalog-head-tools .catalog-icon-button{height:38px!important;min-width:36px!important;padding:0 7px!important;background:rgba(34,38,39,.50)!important;border:1px solid rgba(255,255,255,.12)!important;color:#f1f3f3!important;font-size:20px!important}
+#upgrade .catalog-price-label{font-size:11px!important;margin-left:4px!important}
+#upgrade .catalog-head-tools input[type=number]{width:56px!important;height:34px!important;min-width:0!important;padding:0 5px!important;background:rgba(42,46,47,.48)!important;border:1px solid rgba(255,255,255,.14)!important;border-radius:0!important;color:#f5f6f6!important;font-size:11px!important}
+#upgrade .catalog-head-tools input[type=search]{width:125px!important;height:34px!important;padding:0 7px!important;background:rgba(32,37,38,.70)!important;border:1px solid rgba(255,255,255,.18)!important;color:#fff!important}
+#upgrade .catalog-head-tools input[hidden]{display:none!important}
+#upgrade .catalog-filters{display:none!important}
+#upgrade .catalog-status{font-size:10px!important;color:#d0d5d5!important;padding:6px 10px!important}
+@media(max-width:1100px){#upgrade.upgrade{padding:0 18px 35px!important}#upgrade .upgrade-workspace{grid-template-columns:minmax(0,1fr) 320px minmax(0,1fr)!important}#upgrade .dial{width:280px!important;height:280px!important}#upgrade .upgrade-controls{grid-template-columns:minmax(0,1fr) 280px minmax(0,1fr)!important;gap:10px!important}#upgrade .catalog-head-tools input[type=number]{width:46px!important}}
+@media(max-width:760px){#upgrade.upgrade{padding:0 10px 35px!important}#upgrade .upgrade-workspace{grid-template-columns:1fr!important;gap:8px!important}#upgrade .gauge{grid-row:1!important;height:320px!important}#upgrade .dial{width:270px!important;height:270px!important}#upgrade .from-pick,#upgrade .to-pick{height:140px!important;min-height:140px!important}#upgrade .upgrade-controls{grid-template-columns:1fr!important;height:auto!important;min-height:0!important;gap:8px!important}#upgrade .balance-box,#upgrade .action-box,#upgrade .preset-box{height:55px!important}#upgrade .upgrade-lists{grid-template-columns:1fr!important}#upgrade .catalog-head-tools{gap:2px!important}#upgrade .catalog-head-tools input[type=search]{width:85px!important}}
+
+</style>
 </head><body>
 <header class="top"><div class="brand"><img src="https://caser.one/cdn/fa/icons/header/logo_text_ru.webp" alt="CASER"></div><nav class="nav"><button data-view="inventory">ИНВЕНТАРЬ</button><button class="active" data-view="cases">КЕЙСЫ</button><button data-view="upgrade">АПГРЕЙДЫ</button><button data-view="rewards">НАГРАДЫ</button></nav><div class="account"><span class="account-stat">⚒ <b>0</b></span><span class="account-stat">◈ <b id="balance">0</b></span><button class="plus" id="openDeposit">+</button><button class="notify" type="button" aria-label="Уведомления" onclick="toast('Уведомления появятся после подключения аккаунта CASER')">♟<i></i></button><button class="avatar" id="avatar" title="Открыть профиль">🥷</button></div></header>
 <div class="layout"><aside class="left"><div class="online">ONLINE <b>—</b></div><div class="sidebar-tabs"><button class="active" type="button">▦</button><button type="button">♨</button></div><div class="feed" id="feed"></div><div class="social">➤　◎　✦</div></aside><main><div class="subnav" id="caseSubnav"><button class="subnav-search" id="caseSearchToggle" type="button" aria-label="Поиск кейсов">⌕</button><input id="caseSearch" class="case-quick-search" type="search" placeholder="Поиск кейсов" hidden><button class="active" data-case-filter="all">ВСЕ КЕЙСЫ</button><button data-case-filter="authors">АВТОРСКИЕ КЕЙСЫ</button></div>
