@@ -1003,6 +1003,15 @@ body:after{background:linear-gradient(180deg,rgba(8,11,16,.52),rgba(8,11,16,.82)
 .profile-history .panelhead span{color:#8794a2;font-size:9px;margin-left:auto}
 @media(max-width:800px){.profile-recent{grid-template-columns:repeat(3,minmax(0,1fr))}.profile-inventory-link{padding:10px;font-size:9px}}
 @media(max-width:540px){.profile-card{flex-wrap:wrap}.profile-inventory-link{margin-left:0}.profile-recent{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Restore the two-column case hero composition after earlier layout overrides */
+.case-scene-content{display:grid!important;grid-template-columns:minmax(280px,.9fr) minmax(360px,1.1fr)!important;flex-direction:initial!important;align-items:center!important;justify-content:stretch!important;gap:28px!important;padding:30px clamp(24px,6vw,90px) 54px!important}
+.case-scene-info{order:0!important;text-align:left!important;max-width:460px!important;width:100%!important;margin:0!important}
+.case-scene-object{order:0!important;width:100%!important;height:360px!important;flex:none!important}
+.case-scene-object img{max-width:min(100%,520px)!important;max-height:350px!important;object-fit:contain!important}
+.case-scene-caption{position:absolute!important}
+.case-opening-inline{position:relative!important;z-index:3!important}
+@media(max-width:760px){.case-scene-content{display:flex!important;flex-direction:column-reverse!important;gap:12px!important;padding:16px!important}.case-scene-info{text-align:center!important}.case-scene-object{height:240px!important}.case-scene-object img{max-height:230px!important}}
 </style></head><body>
 <header class="top"><div class="brand"><img src="https://caser.one/cdn/fa/icons/header/logo_text_ru.webp" alt="CASER"></div><nav class="nav"><button data-view="inventory">ИНВЕНТАРЬ</button><button data-view="cases">КЕЙСЫ</button><button class="active" data-view="upgrade">АПГРЕЙДЫ</button><button data-view="rewards">НАГРАДЫ</button><button data-view="profile">ПРОФИЛЬ</button></nav><div class="account"><span class="wallet">⬡ <b id="balance">0</b> C</span><button class="plus" id="openDeposit">+</button><button class="avatar" id="avatar" title="Открыть профиль">🥷</button></div></header>
 <div class="layout"><aside class="left"><div class="online">ONLINE <b>—</b></div><div class="sidebar-tabs"><button class="active" type="button">▦</button><button type="button">♨</button></div><div class="feed" id="feed"></div><div class="social">➤　◎　✦</div></aside><main><div class="subnav" id="caseSubnav"><button class="subnav-search" id="caseSearchToggle" type="button" aria-label="Поиск кейсов">⌕</button><input id="caseSearch" class="case-quick-search" type="search" placeholder="Поиск кейсов" hidden><button class="active" data-case-filter="all">ВСЕ КЕЙСЫ</button><button data-case-filter="authors">АВТОРСКИЕ КЕЙСЫ</button></div>
