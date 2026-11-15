@@ -1012,6 +1012,52 @@ body:after{background:linear-gradient(180deg,rgba(8,11,16,.52),rgba(8,11,16,.82)
 .case-scene-caption{position:absolute!important}
 .case-opening-inline{position:relative!important;z-index:3!important}
 @media(max-width:760px){.case-scene-content{display:flex!important;flex-direction:column-reverse!important;gap:12px!important;padding:16px!important}.case-scene-info{text-align:center!important}.case-scene-object{height:240px!important}.case-scene-object img{max-height:230px!important}}
+
+/* Upgrade wheel: fixed probability sector, animated pointer only */
+#upgrade .dial:before{
+ background:conic-gradient(from -90deg,#e78c32 0 var(--chance,0%),#414b58 var(--chance,0%) 100%)!important;
+ transform:none!important;animation:none!important;
+}
+#upgrade .dial.spinning:before,
+#upgrade .dial.spinning:after{animation:none!important;transform:none!important}
+#upgrade .dial .gold-zone{
+ position:absolute;z-index:3;inset:0;border-radius:50%;pointer-events:none;opacity:0;
+ background:conic-gradient(from -90deg,transparent 0 var(--gold-start,0%),#ffe36a var(--gold-start,0%) var(--gold-end,0%),transparent var(--gold-end,0%) 100%);
+ -webkit-mask:radial-gradient(circle,transparent 65%,#000 76%);
+ mask:radial-gradient(circle,transparent 65%,#000 76%);
+ filter:drop-shadow(0 0 8px #ffd84f);
+ transition:opacity .2s
+}
+#upgrade .dial.gold-event .gold-zone{opacity:1}
+#upgrade .dial .dial-pointer{z-index:6!important}
+#upgrade .dial.spinning .dial-pointer{animation:caserPointerSpin 4.6s cubic-bezier(.10,.72,.10,1) forwards!important}
+#upgrade .dialin{z-index:4!important}
+#upgrade .chance-readout{position:relative;z-index:5;margin-top:15px;min-height:52px}
+#upgrade .chance-readout strong{font-size:28px!important;letter-spacing:-.5px}
+#upgrade .chance-readout small{font-size:10px!important}
+#upgrade .upgrade-workspace{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(250px,300px) minmax(0,1fr)!important;align-items:center!important;gap:18px!important}
+#upgrade .from-pick,#upgrade .to-pick{min-width:0;min-height:300px!important;background:linear-gradient(160deg,#1d2732,#111820)!important;border:1px solid #354555!important;box-shadow:0 12px 34px #0005!important}
+#upgrade .picktitle{background:linear-gradient(90deg,#263342,#1a232d)!important;border-bottom:1px solid #3a4857!important;color:#dce4ec!important;padding:15px 17px!important}
+#upgrade .picktitle span{color:#f2b45d!important;font-variant-numeric:tabular-nums}
+#upgrade .gauge{padding:18px 4px!important}
+#upgrade .dial{width:252px!important;height:252px!important;border:1px solid #687586!important;box-shadow:0 0 0 7px #1b2530,0 0 0 8px #465464,0 15px 45px #000a!important}
+#upgrade .dialin{inset:24%!important;border:1px solid #4b5a68!important;background:radial-gradient(circle at 50% 28%,#344353,#111923 76%)!important}
+#upgrade .dialin .dial-logo{font-size:43px!important;color:#f3ae4e!important;text-shadow:0 0 20px #e99a37aa}
+#upgrade .upgrade-controls{display:grid!important;grid-template-columns:minmax(200px,1fr) minmax(180px,.8fr) minmax(250px,1fr)!important;align-items:center!important;gap:15px!important;padding:16px!important;background:#141c25!important;border:1px solid #354352!important}
+#upgrade .balance-box{background:#1d2935!important;border:1px solid #3c4c5b!important;padding:13px!important}
+#upgrade .balance-head{color:#dce4ec!important}
+#upgrade .balance-range-row input[type=number]{background:#101820!important;border:1px solid #465463!important;color:#fff!important}
+#upgrade .preset-box{display:flex!important;flex-wrap:wrap!important;justify-content:center!important;gap:6px!important}
+#upgrade .preset-box button{background:#273442!important;border:1px solid #465565!important;color:#e6ebf1!important;border-radius:3px!important;padding:9px 12px!important;font-weight:900!important}
+#upgrade .preset-box button.active{background:#d58b38!important;border-color:#f3b75f!important;color:#111820!important}
+#upgrade .mystery-button{color:#ffd66c!important}
+#upgrade .upgrade-spin-btn{max-width:100%!important;min-height:50px!important;background:linear-gradient(180deg,#e6a34a,#a96120)!important;border:1px solid #ffcb78!important;color:#16191e!important;box-shadow:0 5px 20px #d9893233!important}
+#upgrade .upgrade-lists{display:grid!important;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)!important;gap:14px!important;margin-top:16px!important}
+#upgrade .upgrade-lists>.panel{background:#151e28!important;border:1px solid #354555!important}
+#upgrade .upgrade-lists .panelhead{background:#202c38!important;border-bottom:1px solid #394958!important}
+#upgrade .upgradeResult{min-height:24px}
+@media(max-width:900px){#upgrade .upgrade-workspace{grid-template-columns:minmax(0,1fr) minmax(220px,260px) minmax(0,1fr)!important;gap:8px!important}#upgrade .dial{width:210px!important;height:210px!important}#upgrade .upgrade-controls{grid-template-columns:1fr 1fr!important}#upgrade .preset-box{grid-column:1/-1}}
+@media(max-width:680px){#upgrade .upgrade-workspace{grid-template-columns:1fr!important}#upgrade .gauge{grid-row:1;padding:20px 0!important}#upgrade .from-pick,#upgrade .to-pick{min-height:170px!important}#upgrade .upgrade-controls{grid-template-columns:1fr!important}#upgrade .upgrade-lists{grid-template-columns:1fr!important}#upgrade .preset-box{grid-column:auto}}
 </style></head><body>
 <header class="top"><div class="brand"><img src="https://caser.one/cdn/fa/icons/header/logo_text_ru.webp" alt="CASER"></div><nav class="nav"><button data-view="inventory">ИНВЕНТАРЬ</button><button data-view="cases">КЕЙСЫ</button><button class="active" data-view="upgrade">АПГРЕЙДЫ</button><button data-view="rewards">НАГРАДЫ</button><button data-view="profile">ПРОФИЛЬ</button></nav><div class="account"><span class="wallet">⬡ <b id="balance">0</b> C</span><button class="plus" id="openDeposit">+</button><button class="avatar" id="avatar" title="Открыть профиль">🥷</button></div></header>
 <div class="layout"><aside class="left"><div class="online">ONLINE <b>—</b></div><div class="sidebar-tabs"><button class="active" type="button">▦</button><button type="button">♨</button></div><div class="feed" id="feed"></div><div class="social">➤　◎　✦</div></aside><main><div class="subnav" id="caseSubnav"><button class="subnav-search" id="caseSearchToggle" type="button" aria-label="Поиск кейсов">⌕</button><input id="caseSearch" class="case-quick-search" type="search" placeholder="Поиск кейсов" hidden><button class="active" data-case-filter="all">ВСЕ КЕЙСЫ</button><button data-case-filter="authors">АВТОРСКИЕ КЕЙСЫ</button></div>
@@ -1084,6 +1130,7 @@ body:after{background:linear-gradient(180deg,rgba(8,11,16,.52),rgba(8,11,16,.82)
   <div class="gauge">
    <div class="dial" id="upgradeDial">
     <span class="dial-mark dial-top">100%</span><span class="dial-mark dial-left">50%</span><span class="dial-mark dial-right">50%</span><span class="dial-mark dial-bottom">0%</span>
+    <div class="gold-zone" id="goldZone" aria-hidden="true"></div>
     <div class="dial-pointer" id="upgradePointer"></div>
     <div class="dialin"><div class="dial-logo">✦</div></div>
    </div>
@@ -1399,6 +1446,7 @@ function refreshUpgrade(){
  $("chance").textContent=mysteryMode?"?":chance.toFixed(2)+"%";
  $("chanceLabel").textContent=mysteryMode?"Mystery Upgrade":(chance>=60?"Высокий шанс":chance>=35?"Средний шанс":"Низкий шанс");
  $("upgradeDial").style.setProperty("--chance",Math.max(0,Math.min(95,chance))+"%");
+ $("upgradeDial").classList.remove("gold-event");$("upgradeDial").style.setProperty("--gold-start","0%");$("upgradeDial").style.setProperty("--gold-end","0%");
  $("fromSlot").textContent=selectedItems.length?selectedItems.map(x=>x[0]).join(", ")+" · C "+fmt(itemValue):"Выбранные предметы появятся здесь";
  $("fromValue").textContent="C "+fmt(stake);
  $("toSlot").textContent=mysteryMode?"MYSTERY UPGRADE — предмет определится случайно":(target?target[0]+" · C "+fmt(target[2]):"Выберите предмет из списка ниже");
@@ -1451,19 +1499,34 @@ $("upgradeAction").onclick=()=>{
  $("chance").textContent=chance.toFixed(2)+"%";
  upgradeBusy=true;$("upgradeAction").disabled=true;
  const dial=$("upgradeDial"),pointer=$("upgradePointer");
+ // The success arc stays fixed. Only the pointer rotates.
  const chancePart=Math.max(0,Math.min(95,chance))/100;
+ const goldWidth=chancePart>0?Math.min(.01,chancePart*.25):0;
+ const goldStart=goldWidth?Math.random()*Math.max(0,chancePart-goldWidth):0;
+ const goldEnd=goldStart+goldWidth;
  const landingAngle=won?Math.random()*chancePart*360:chancePart*360+Math.random()*(1-chancePart)*360;
+ const goldWon=won&&goldWidth>0&&(landingAngle/360)>=goldStart&&(landingAngle/360)<=goldEnd;
  const finalAngle=(360-landingAngle)%360;
  dial.style.setProperty("--chance",Math.max(0,Math.min(95,chance))+"%");
+ dial.style.setProperty("--gold-start",(goldStart*100)+"%");
+ dial.style.setProperty("--gold-end",(goldEnd*100)+"%");
+ dial.classList.toggle("gold-event",goldWidth>0);
  dial.style.setProperty("--spin-to",(360*5+finalAngle)+"deg");
  dial.classList.remove("spinning");void dial.offsetWidth;dial.classList.add("spinning");
  setTimeout(()=>{
   selectedItems.forEach(item=>{const i=data.items.indexOf(item);if(i>=0)data.items.splice(i,1)});
   data.balance-=cash;
-  if(won){data.items.unshift(target);$("upgradeResult").textContent="УСПЕХ — получен "+target[0];toast("Апгрейд успешен")}
-  else{$("upgradeResult").textContent="НЕУДАЧА — ставка списана. Целевой предмет не получен.";toast("Апгрейд не удался")}
+  if(won){
+   const awarded=goldWon?[ "GOLD · "+target[0],target[1],Math.round(Number(target[2])*2),"legendary",target[4]||"" ]:target;
+   data.items.unshift(awarded);
+   $("upgradeResult").textContent=goldWon?"ЗОЛОТОЙ АПГРЕЙД! "+awarded[0]+" · C "+fmt(awarded[2]):"УСПЕХ — получен "+target[0];
+   toast(goldWon?"ЗОЛОТОЕ СОБЫТИЕ! Стоимость предмета ×2":"Апгрейд успешен");
+  }else{
+   $("upgradeResult").textContent="НЕУДАЧА — ставка списана. Целевой предмет не получен.";
+   toast("Апгрейд не удался");
+  }
   selectedItems=[];selectedTarget=null;chancePreset=null;$("stakeValue").value="0";if($("stakeSlider"))$("stakeSlider").value="0";mysteryMode=false;
-  upgradeBusy=false;$("upgradeAction").disabled=false;save();renderChooseItems();refreshUpgrade();dial.classList.remove("spinning");
+  upgradeBusy=false;$("upgradeAction").disabled=false;save();renderChooseItems();refreshUpgrade();dial.classList.remove("spinning","gold-event");
  },4700);
 };
 render();
