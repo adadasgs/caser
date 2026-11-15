@@ -984,6 +984,25 @@ body:after{background:linear-gradient(180deg,rgba(8,11,16,.52),rgba(8,11,16,.82)
 .profile-stats small{color:#8f9cab!important}.profile-stats b{color:#f0b45e!important}.profile-note{color:#9aa7b5!important}
 @media(max-width:900px){.featured-cases-grid,.grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 @media(max-width:600px){.featured-cases-grid,.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.case-scene{min-height:590px!important}.case-scene-content{display:flex!important;flex-direction:column-reverse!important;justify-content:center!important;gap:10px!important;padding:16px!important}.case-scene-object{height:245px!important;width:100%}.case-scene-object img{max-height:235px!important}.case-scene-info{max-width:100%!important;text-align:center!important}.case-scene-info h1{font-size:26px!important}.profile-card{padding:18px!important}.feeditem .thumb{width:34px!important;height:34px!important;flex-basis:34px!important}}
+
+.profile-topline{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.profile-topline .heading{margin-bottom:14px}
+.profile-status{display:flex;align-items:center;gap:7px;color:#8e9baa;font-size:9px;font-weight:900;letter-spacing:1.2px}
+.profile-status i{width:7px;height:7px;border-radius:50%;background:#d69a49;box-shadow:0 0 9px #d69a49}
+.profile-identity{min-width:0;position:relative;z-index:1}
+.profile-inventory-link{position:relative;z-index:2;margin-left:auto;padding:12px 16px;background:#242f3b;border:1px solid #506071;color:#e9edf2;font-size:10px;font-weight:900;letter-spacing:.8px;cursor:pointer}
+.profile-inventory-link b{margin-left:12px;color:#efb45e}
+.profile-history{margin-top:14px;overflow:hidden}
+.profile-recent{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px;padding:14px}
+.profile-recent-item{min-width:0;padding:10px;background:#131b24;border:1px solid #303d4a;display:flex;flex-direction:column;gap:7px}
+.profile-recent-item>div{height:86px;display:grid;place-items:center;background:radial-gradient(ellipse,#344353,#19232d)}
+.profile-recent-item img{width:100%;height:100%;object-fit:contain}
+.profile-recent-item b{font-size:10px;color:#e5eaf0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.profile-recent-item span{font-size:10px;color:#eab15e;font-weight:900}
+.profile-no-items{grid-column:1/-1;padding:20px;color:#8e9baa;font-size:11px}
+.profile-history .panelhead span{color:#8794a2;font-size:9px;margin-left:auto}
+@media(max-width:800px){.profile-recent{grid-template-columns:repeat(3,minmax(0,1fr))}.profile-inventory-link{padding:10px;font-size:9px}}
+@media(max-width:540px){.profile-card{flex-wrap:wrap}.profile-inventory-link{margin-left:0}.profile-recent{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style></head><body>
 <header class="top"><div class="brand"><img src="https://caser.one/cdn/fa/icons/header/logo_text_ru.webp" alt="CASER"></div><nav class="nav"><button data-view="inventory">ИНВЕНТАРЬ</button><button data-view="cases">КЕЙСЫ</button><button class="active" data-view="upgrade">АПГРЕЙДЫ</button><button data-view="rewards">НАГРАДЫ</button><button data-view="profile">ПРОФИЛЬ</button></nav><div class="account"><span class="wallet">⬡ <b id="balance">0</b> C</span><button class="plus" id="openDeposit">+</button><button class="avatar" id="avatar" title="Открыть профиль">🥷</button></div></header>
 <div class="layout"><aside class="left"><div class="online">ONLINE <b>—</b></div><div class="sidebar-tabs"><button class="active" type="button">▦</button><button type="button">♨</button></div><div class="feed" id="feed"></div><div class="social">➤　◎　✦</div></aside><main><div class="subnav" id="caseSubnav"><button class="subnav-search" id="caseSearchToggle" type="button" aria-label="Поиск кейсов">⌕</button><input id="caseSearch" class="case-quick-search" type="search" placeholder="Поиск кейсов" hidden><button class="active" data-case-filter="all">ВСЕ КЕЙСЫ</button><button data-case-filter="authors">АВТОРСКИЕ КЕЙСЫ</button></div>
@@ -1087,7 +1106,7 @@ body:after{background:linear-gradient(180deg,rgba(8,11,16,.52),rgba(8,11,16,.82)
   </div>
  </div>
  <p id="upgradeResult" class="upgrade-result">Результат апгрейда появится здесь.</p>
-</section><section class="view" id="inventory"><h2 class="heading">МОЙ ИНВЕНТАРЬ</h2><div class="panel"><div class="panelhead">МОИ ПРЕДМЕТЫ <span id="agentName"></span></div><div class="items" id="inventoryItems"></div></div></section><section class="view" id="profile"><h2 class="heading">ПРОФИЛЬ</h2><div class="profile-card"><div class="profile-avatar" id="profileAvatar">🥷</div><div><div class="profile-label">АГЕНТ КЕЙСЕР</div><h2 id="profileName">—</h2><span class="profile-id" id="profileId"></span></div></div><div class="profile-stats"><div><small>БАЛАНС</small><b id="profileBalance">0 C</b></div><div><small>ПРЕДМЕТОВ</small><b id="profileItems">0</b></div><div><small>СТОИМОСТЬ ИНВЕНТАРЯ</small><b id="profileWorth">0 C</b></div></div><div class="panel"><div class="panelhead">АККАУНТ</div><p class="profile-note">Демо-профиль КЕЙСЕР. Данные инвентаря и баланса сохраняются на сервере проекта.</p></div></section><section class="view" id="rewards">
+</section><section class="view" id="inventory"><h2 class="heading">МОЙ ИНВЕНТАРЬ</h2><div class="panel"><div class="panelhead">МОИ ПРЕДМЕТЫ <span id="agentName"></span></div><div class="items" id="inventoryItems"></div></div></section><section class="view" id="profile"><div class="profile-topline"><h2 class="heading">ПРОФИЛЬ</h2><span class="profile-status"><i></i> ЛИЧНЫЙ КАБИНЕТ</span></div><div class="profile-card"><div class="profile-avatar" id="profileAvatar">🥷</div><div class="profile-identity"><div class="profile-label">ПРОФИЛЬ ИГРОКА</div><h2 id="profileName">—</h2><span class="profile-id" id="profileId"></span></div><button class="profile-inventory-link" type="button" data-view="inventory">МОЙ ИНВЕНТАРЬ <b>→</b></button></div><div class="profile-stats"><div><small>БАЛАНС</small><b id="profileBalance">0 C</b></div><div><small>ПРЕДМЕТОВ</small><b id="profileItems">0</b></div><div><small>СТОИМОСТЬ ИНВЕНТАРЯ</small><b id="profileWorth">0 C</b></div></div><div class="panel profile-history"><div class="panelhead">ПОСЛЕДНИЕ ПРЕДМЕТЫ <span>ИЗ ИНВЕНТАРЯ</span></div><div class="profile-recent" id="profileRecent"></div></div><div class="panel"><div class="panelhead">ДАННЫЕ АККАУНТА</div><p class="profile-note">Локальный профиль проекта. Баланс и предметы сохраняются в аккаунте этого браузера на сервере проекта. Вход через Steam пока не подключён.</p></div></section><section class="view" id="rewards">
  <h2 class="heading">НАГРАДЫ</h2>
  <div class="weekly-hero">
   <div class="weekly-copy"><div class="eyebrow">CASER • WEEKLY DROP</div><h2>ЕЖЕНЕДЕЛЬНЫЙ НАБОР</h2><h3>Разблокируй награды</h3><p>Пополняй баланс и играй на сайте, чтобы разблокировать награды. Еженедельный дроп обновляется каждые 7 дней.</p><button class="primary" id="rewardsLogin">АВТОРИЗОВАТЬСЯ</button></div>
@@ -1125,6 +1144,7 @@ function render(){
   $("profileName").textContent=data.name;$("profileId").textContent="ID "+agentId.slice(0,12);
   $("profileAvatar").textContent=data.avatar;$("profileBalance").textContent=fmt(data.balance)+" C";
   $("profileItems").textContent=data.items.length;$("profileWorth").textContent=fmt(data.items.reduce((s,x)=>s+(Number(x[2])||0),0));
+  const recent=$("profileRecent");if(recent){recent.innerHTML=data.items.length?data.items.slice(0,6).map(x=>{const im=x[4]||(drops.find(d=>d[0]===x[0])||[])[4]||"";return '<div class="profile-recent-item"><div>'+(im?'<img src="'+im+'" alt="">':'✦')+'</div><b>'+escapeCatalogText(x[0])+'</b><span>C '+fmt(x[2])+"</span></div>"}).join(""):'<div class="profile-no-items">Пока нет предметов. Открой кейс, чтобы здесь появилась история.</div>'}
  }
  $("modalBalance").textContent=fmt(data.balance);$("upgradeBal").textContent=fmt(data.balance);$("avatar").textContent=data.avatar;
  $("agentName").textContent="— Агент "+data.name;
