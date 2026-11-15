@@ -950,6 +950,40 @@ body:before{filter:brightness(.42) saturate(.92)!important;transform:none!import
  .case-opening-heading small{display:none}
  .case-roulette-window .reel-card{width:112px!important;flex-basis:112px!important;height:125px!important}
 }
+
+body:before{background:url("https://caser.one/cdn/fa/images/header/headerBG.webp") center 40%/cover no-repeat!important;filter:brightness(.28) saturate(.88)!important;transform:none!important}
+body:after{background:linear-gradient(180deg,rgba(8,11,16,.52),rgba(8,11,16,.82))!important;backdrop-filter:none!important}
+.top,.left,.subnav,.panel,.pick,.case-detail-toolbar,.case-contents-section,.case-opening-inline{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.top{background:rgba(13,17,23,.96)!important}.left{background:rgba(12,16,22,.96)!important}.subnav{background:rgba(17,22,29,.97)!important}
+.panel,.pick,.profile-stats>div{background:#171e27!important}
+.featured-case-art{height:auto!important;aspect-ratio:1.39!important;background:#1b222b!important;overflow:hidden}
+.featured-case-art img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .25s}
+.featured-case:hover .featured-case-art img{transform:scale(1.045)}
+.featured-case{background:#202832!important;border:1px solid #394653!important}.featured-case-info{background:#202832!important}
+.grid{grid-template-columns:repeat(5,minmax(0,1fr))!important}.case{background:#202832!important;border:1px solid #394653!important}
+.caseart{background:#171e27!important}.casebox img{object-fit:contain!important;padding:12px!important}
+.case-scene{min-height:520px!important;background:url("https://caser.one/cdn/fa/images/header/headerBG.webp") center 46%/cover no-repeat!important}
+.case-scene:before{background:linear-gradient(90deg,rgba(5,8,13,.72),rgba(5,8,13,.28) 55%,rgba(5,8,13,.52)),linear-gradient(0deg,rgba(5,8,13,.8),transparent 45%)!important}
+.case-scene-content{min-height:430px!important;grid-template-columns:minmax(260px,.85fr) minmax(340px,1.15fr)!important;max-width:1440px!important}
+.case-scene-object img{max-width:min(90%,510px)!important;max-height:340px!important;transform:none!important;animation:caseCrateIdle 5s ease-in-out infinite!important}
+.case-scene-light{filter:blur(36px)!important}.case-opening-inline{background:rgba(9,13,19,.94)!important}
+.case-roulette-window{background:linear-gradient(180deg,#0b1017,#202c39,#0b1017)!important;border-color:#5b6877!important}
+.case-roulette-window .reel-card{background:linear-gradient(150deg,#293746,#111923)!important}
+.case-contents-section{background:#141b24!important}
+.feed{padding:8px 7px!important}.feeditem{display:flex;gap:8px;align-items:center;padding:8px 5px!important;border-bottom:1px solid #29323d!important;min-height:58px}
+.feeditem .thumb{width:42px!important;height:42px!important;flex:0 0 42px!important;display:grid;place-items:center}
+.feeditem .thumb img{width:100%;height:100%;object-fit:contain}.feedcopy{min-width:0;display:flex;flex-direction:column;gap:4px}
+.feedcopy b{font-size:10px!important;color:#e9edf2!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feedcopy small{font-size:9px!important;color:#99a5b3!important}.feed-empty{padding:18px 10px;color:#8592a1;font-size:10px;line-height:1.6}
+.online b{font-variant-numeric:tabular-nums}
+.profile-card{position:relative;overflow:hidden;min-height:150px;padding:28px 30px!important;background:linear-gradient(100deg,rgba(14,21,30,.98),rgba(30,42,55,.9)),url("https://caser.one/cdn/fa/images/header/headerBG.webp") center/cover!important;border:1px solid #394958!important;border-radius:3px!important}
+.profile-card:after{content:"";position:absolute;right:6%;top:-35%;width:230px;height:230px;border:1px solid #e6a34a33;border-radius:50%;box-shadow:0 0 0 25px #e6a34a0b,0 0 0 55px #e6a34a08}
+.profile-avatar{width:82px!important;height:82px!important;background:#1c2834!important;border:1px solid #d79b4b!important;border-radius:50%!important}
+.profile-label{color:#e5a54e!important}.profile-card h2{font-size:27px!important;font-weight:950!important}
+.profile-stats{gap:8px!important}.profile-stats>div{border-radius:3px!important;border:1px solid #34404c!important;padding:20px!important}
+.profile-stats small{color:#8f9cab!important}.profile-stats b{color:#f0b45e!important}.profile-note{color:#9aa7b5!important}
+@media(max-width:900px){.featured-cases-grid,.grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:600px){.featured-cases-grid,.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.case-scene{min-height:590px!important}.case-scene-content{display:flex!important;flex-direction:column-reverse!important;justify-content:center!important;gap:10px!important;padding:16px!important}.case-scene-object{height:245px!important;width:100%}.case-scene-object img{max-height:235px!important}.case-scene-info{max-width:100%!important;text-align:center!important}.case-scene-info h1{font-size:26px!important}.profile-card{padding:18px!important}.feeditem .thumb{width:34px!important;height:34px!important;flex-basis:34px!important}}
 </style></head><body>
 <header class="top"><div class="brand"><img src="https://caser.one/cdn/fa/icons/header/logo_text_ru.webp" alt="CASER"></div><nav class="nav"><button data-view="inventory">ИНВЕНТАРЬ</button><button data-view="cases">КЕЙСЫ</button><button class="active" data-view="upgrade">АПГРЕЙДЫ</button><button data-view="rewards">НАГРАДЫ</button><button data-view="profile">ПРОФИЛЬ</button></nav><div class="account"><span class="wallet">⬡ <b id="balance">0</b> C</span><button class="plus" id="openDeposit">+</button><button class="avatar" id="avatar" title="Открыть профиль">🥷</button></div></header>
 <div class="layout"><aside class="left"><div class="online">ONLINE <b>—</b></div><div class="sidebar-tabs"><button class="active" type="button">▦</button><button type="button">♨</button></div><div class="feed" id="feed"></div><div class="social">➤　◎　✦</div></aside><main><div class="subnav" id="caseSubnav"><button class="subnav-search" id="caseSearchToggle" type="button" aria-label="Поиск кейсов">⌕</button><input id="caseSearch" class="case-quick-search" type="search" placeholder="Поиск кейсов" hidden><button class="active" data-case-filter="all">ВСЕ КЕЙСЫ</button><button data-case-filter="authors">АВТОРСКИЕ КЕЙСЫ</button></div>
@@ -1069,7 +1103,7 @@ body:before{filter:brightness(.42) saturate(.92)!important;transform:none!import
 <div class="modalbg" id="dropModal"><div class="modal"><div class="eyebrow">РЕЗУЛЬТАТ ОТКРЫТИЯ</div><h2 id="dropTitle">ВАШ ВЫПАВШИЙ ПРЕДМЕТ</h2><div class="result-art" id="dropIcon">✦</div><h3 id="dropName"></h3><p id="dropDesc"></p><button class="primary" id="closeDrop">ЗАБРАТЬ ПРЕДМЕТ</button></div></div><div class="toast" id="toast"></div>
 <script>
 const cases=[["Strogo ( ez )Awp","https://s3.caser.gg/cdn/custom-cases/5094783afc5db63ee8721486e0e67278-6aee5d1e53abe.webp",4.96,"High","06.11.2026",4747469],["Нож с завода за 5₱","https://s3.caser.gg/cdn/custom-cases/d22ca53d890962e83633d2bd52d681ca-6aea59a81bc38.webp",5.1,"High","06.11.2026",5767585],["Банан","https://s3.caser.gg/cdn/custom-cases/16e36584c7e2471e3c8ba89878e88372-6af0e1962bcac.png",87.11,"Medium","08.11.2026",253892],["M4A1-S Farm","https://s3.caser.gg/cdn/custom-cases/677361a5f77796e27ad774cb39df33ba-6aea2b9a1ad02.png",20.27,"Medium","03.11.2026",1935717],["ШУБА","https://s3.caser.gg/cdn/custom-cases/166f4187510fd8bdefa122ca94e75dc7-6ae9a309d33f6.png",34.42,"Medium","03.11.2026",2250386],["bright water farm","https://s3.caser.gg/cdn/custom-cases/9019118ab65801104fb1302a00deef29-6af045592f030.webp",3.88,"High","08.11.2026",368478],["Апгрейд в х10","https://s3.caser.gg/cdn/custom-cases/51b9ab5f866b0d1e899251ac1e822faf-6aec53cb347c7.png",37.45,"High","05.11.2026",418375],["Tape farm","https://s3.caser.gg/cdn/custom-cases/0574810e5c61f807cbb2b7bc9ca66946-6af0a8e022d15.png",57.22,"High","09.11.2026",107951],["ФАРМ ИЗИ АЗИМОВ 4 РУБ","https://s3.caser.gg/cdn/custom-cases/c135855441c5bc2c440372431fbcce2d-6af07b8d89cb9.png",4.11,"High","08.11.2026",321036],["M9 Гамма","https://s3.caser.gg/cdn/custom-cases/f9e4232d5e61408f4939cf7f8f7a7c50-6aecf30b0f9b8.webp",4.21,"High","05.11.2026",741658],["каждый 5 золото","https://s3.caser.gg/cdn/custom-cases/d4d090b2a1dc49ce1f4bd1e9780c5cb9-6ae0d62238354.webp",155,"Medium","27.10.2026",1001935],["баг на окуп","https://s3.caser.gg/cdn/custom-cases/bed4e6fd2425d1b5b6e236db4e0b0e8c-6aee6fa189066.webp",91.56,"Medium","10.11.2026",57115],["Фарм баланса","https://s3.caser.gg/cdn/custom-cases/67d6cc7afbc96bb2534ac98157fecc94-6ae1090e6b376.png",10.84,"Medium","27.10.2026",800720],["5% knife","https://s3.caser.gg/cdn/custom-cases/398ed91c0635e894e448d5c2e5d52d16-6ae1160500235.webp",4.51,"High","02.11.2026",3288897],["Открывать по 4 кейса!","https://s3.caser.gg/cdn/custom-cases/d4578fd6603de170e57f44733faf2268-6ae0d7df1bd9f.png",25.52,"Low","27.10.2026",2008130]];
-const featuredCases=[["Багровый лист","",39,"","15.11.2026",0,0],["Морфей","",79,"","15.11.2026",0,1],["Миньон","",99,"","15.11.2026",0,2],["w","",150,"NEW","15.11.2026",0,3],["Дождливый вечер","",349,"","15.11.2026",0,4],["Малибу","",549,"NEW","15.11.2026",0,5],["Шепот осени","",799,"","15.11.2026",0,6],["Бургунди","",1199,"","15.11.2026",0,7],["GTA 6 Ultimate","",8000,"NEW","15.11.2026",0,8],["Оазис","",49900,"NEW","15.11.2026",0,9]];
+const featuredCases=cases.slice(0,10);
 const drops=[["★ Bayonet | Doppler","KNIFE",150000,"legendary","https://caser.one/cdn/fa/images/landing/items/bayonet-doppler.webp"],["AK-47 | Inheritance","AK-47",18500,"epic","https://caser.one/cdn/fa/images/landing/items/ak-inheritance.webp"],["P250 | Muertos","P250",1400,"common","https://caser.one/cdn/fa/images/landing/items/p250-muertos.webp"],["Galil AR | Sugar Rush","GALIL AR",800,"common","https://caser.one/cdn/fa/images/landing/items/galil-ar-sugar-rush.webp"],["UMP-45 | K.O. Factory","UMP-45",1100,"common","https://caser.one/cdn/fa/images/landing/items/ump45-ko-factory.webp"],["AWP | Printstream","AWP",50000,"legendary","https://caser.one/cdn/fa/images/landing/items/awp-printstream.webp"],["Desert Eagle | Printstream","DESERT EAGLE",8000,"epic","https://caser.one/cdn/fa/images/landing/items/desert-eagle-printstream.webp"],["FAMAS | Bad Trip","FAMAS",2000,"rare","https://caser.one/cdn/fa/images/landing/items/famas-bad-trip.webp"],["MP9 | Latte Rush","MP9",900,"common","https://caser.one/cdn/fa/images/landing/items/mp9-latte-rush.webp"],["★ Sport Gloves | Slingshot","GLOVES",85000,"legendary","https://caser.one/cdn/fa/images/landing/items/sport-gloves-slingshot.webp"],["Glock-18 | Fully Tuned","GLOCK-18",1200,"common","https://caser.one/cdn/fa/images/landing/items/glock18-fully-tuned.webp"],["Dual Berettas | Melondrama","DUAL BERETTAS",700,"common","https://caser.one/cdn/fa/images/landing/items/dual-berettas-melondrama.webp"],["MAC-10 | Disco Tech","MAC-10",1200,"common","https://caser.one/cdn/fa/images/landing/items/mac10-disco-tech.webp"],["★ Karambit | Autotronic","KARAMBIT",70000,"legendary","https://caser.one/cdn/fa/images/landing/items/karambit-autotronic.webp"],["USP-S | Orion","USP-S",5000,"rare","https://caser.one/cdn/fa/images/landing/items/usp-s-orion.webp"],["Tec-9 | Decimator","TEC-9",800,"common","https://caser.one/cdn/fa/images/landing/items/tec9-decimator.webp"],["SCAR-20 | Cyrex","SCAR-20",700,"common","https://caser.one/cdn/fa/images/landing/items/scar20-cyrex.webp"],["★ Specialist Gloves | Cloud Chaser","GLOVES",42000,"legendary","https://caser.one/cdn/fa/images/landing/items/specialist-gloves-cloud-chaser.webp"],["M4A1-S | Printstream","M4A1-S",18000,"epic","https://caser.one/cdn/fa/images/landing/items/m4a1s-printstream.webp"],["Five-SeveN | Fairy Tale","FIVE-SEVEN",1300,"common","https://caser.one/cdn/fa/images/landing/items/five-seven-fairy-tale.webp"],["SSG 08 | Turbo Peek","SSG 08",900,"common","https://caser.one/cdn/fa/images/landing/items/ssg08-turbo-peek.webp"]];
 const DEMO_C_PER_USD=100;
 let catalogItems=drops.slice();
@@ -1116,9 +1150,7 @@ function show(id){
 document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>show(b.dataset.view));$("avatar").onclick=()=>show("profile");$("rewardsLogin")?.addEventListener("click",()=>toast("Steam-авторизация в демо-версии не подключена"));
 function caseCard(c,i){return '<article class="case" data-case="'+i+'"><div class="caseart"><div class="casebox"><img src="'+c[1]+'" alt="'+c[0]+'" loading="lazy"></div></div><div class="caseinfo"><b>'+c[0]+'</b><span>'+Number(c[2]).toLocaleString("ru-RU",{minimumFractionDigits:2,maximumFractionDigits:2})+' C</span></div><small class="case-quality">'+(c[3]||"")+' · обновлён '+c[4]+'</small><small class="case-opens">'+Number(c[5]).toLocaleString("ru-RU")+' открытий</small></article>'}
 function featuredCaseCard(c,i){
- const col=i%5,row=Math.floor(i/5);
- const pos=(col*25)+"% "+(row*100)+"%";
- return '<article class="featured-case" data-case="'+i+'" data-case-type="featured"><div class="featured-case-art" style="background-position:'+pos+'"></div><div class="featured-case-info"><b>'+c[0]+'</b><span>'+Number(c[2]).toLocaleString("ru-RU")+" ◈"+'</span></div></article>';
+ return '<article class="featured-case" data-case="'+i+'" data-case-type="featured"><div class="featured-case-art"><img src="'+c[1]+'" alt="'+c[0]+'" loading="lazy" onerror="this.style.opacity=0"></div><div class="featured-case-info"><b>'+c[0]+'</b><span>'+Number(c[2]).toLocaleString("ru-RU",{minimumFractionDigits:2,maximumFractionDigits:2})+' C</span></div></article>';
 }
 let activeCaseFilter="all";
 function renderCases(){
@@ -1128,8 +1160,8 @@ function renderCases(){
  $("featuredCasesGrid").innerHTML=featuredCases.map(featuredCaseCard).join("");
  $("featuredCasesSection").hidden=activeCaseFilter==="authors";
  $("authorsSection").hidden=activeCaseFilter==="featured";
- $("casegrid").innerHTML=list.slice(0,10).map(o=>caseCard(o.c,o.i)).join("")||'<div class="empty-catalog">Кейсы не найдены</div>';
- $("customgrid").innerHTML=list.slice(10,15).map(o=>caseCard(o.c,o.i)).join("");
+ $("casegrid").innerHTML=list.map(o=>caseCard(o.c,o.i)).join("")||'<div class="empty-catalog">Кейсы не найдены</div>';
+ $("customgrid").innerHTML="";
 }
 document.querySelectorAll("[data-case-filter]").forEach(button=>button.addEventListener("click",()=>{
  activeCaseFilter=button.dataset.caseFilter==="authors"?"authors":"all";
@@ -1144,7 +1176,7 @@ $("caseSearchToggle")?.addEventListener("click",()=>{
 ["casePriceFrom","casePriceTo","caseSort"].forEach(id=>{$(id)?.addEventListener("input",renderCases);$(id)?.addEventListener("change",renderCases)});
 renderCases();
 
-$("feed").innerHTML="";
+
 
 function reelCard(d,index){return '<div class="reel-card '+d[3]+'"'+(Number.isInteger(index)?' data-reel-index="'+index+'"':'')+'><div class="weapon"><img src="'+d[4]+'" alt="'+d[0]+'" loading="eager"></div><small>'+d[0]+'</small><small>C '+fmt(d[2])+'</small></div>'}
 function openCase(i,source="custom"){
@@ -1156,14 +1188,9 @@ function openCase(i,source="custom"){
  $("casePrice").textContent="СТОИМОСТЬ ОТКРЫТИЯ  "+fmt(c[2])+" C";
  const art=$("caseArtwork"),object=art.parentElement;
  object.classList.toggle("featured-case-hero",source==="featured");
- if(source==="featured"){
-  const idx=Number(c[6])||0;object.style.setProperty("--case-sprite-x",(idx%5*25)+"%");object.style.setProperty("--case-sprite-y",(Math.floor(idx/5)*100)+"%");
-  art.style.display="none";art.onerror=null;
- }else{
-  object.style.removeProperty("--case-sprite-x");object.style.removeProperty("--case-sprite-y");
-  art.style.display="block";art.src=c[1];art.alt=c[0];art.style.visibility="visible";
-  art.onerror=()=>{art.style.visibility="hidden"};
- }
+ object.style.removeProperty("--case-sprite-x");object.style.removeProperty("--case-sprite-y");
+ art.style.display="block";art.src=c[1];art.alt=c[0];art.style.visibility="visible";
+ art.onerror=()=>{art.style.visibility="hidden"};
  $("caseOpening").hidden=true;$("caseScene").hidden=false;$("spinButton").disabled=false;
  $("spinButton").textContent="ОТКРЫТЬ КЕЙС";$("caseNotice").hidden=true;$("caseNotice").textContent="";
  $("caseItemsCount").textContent=drops.length+" ПРЕДМЕТОВ";
@@ -1202,6 +1229,7 @@ function spin(quick=false){
   if(animatedTarget)animatedTarget.classList.add("is-winning");
   rolling=false;
   data.items.unshift(...wins);save();
+  const lastWin=wins[wins.length-1];fetch("/api/activity/"+encodeURIComponent(agentId),{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({item:lastWin[0],image:lastWin[4],price:lastWin[2]})}).catch(()=>{});
   $("caseOpening").hidden=true;$("caseScene").hidden=false;
   $("spinButton").disabled=false;$("quickSpinButton").disabled=false;
   $("spinButton").textContent=count===1?"ОТКРЫТЬ ЕЩЁ РАЗ":"ОТКРЫТЬ ЕЩЁ "+count;
@@ -1409,5 +1437,18 @@ $("upgradeAction").onclick=()=>{
   upgradeBusy=false;$("upgradeAction").disabled=false;save();renderChooseItems();refreshUpgrade();dial.classList.remove("spinning");
  },4700);
 };
-render();load();show("cases");loadSkinCatalog();
+render();
+async function refreshLiveSidebar(){
+ try{
+  const [onlineRes,feedRes]=await Promise.all([fetch("/api/online",{cache:"no-store"}),fetch("/api/activity",{cache:"no-store"})]);
+  if(onlineRes.ok){const v=await onlineRes.json(),n=document.querySelector(".online b");if(n)n.textContent=Number(v.count||0).toLocaleString("ru-RU")}
+  if(feedRes.ok){const v=await feedRes.json(),items=Array.isArray(v.items)?v.items:[],host=$("feed");
+   host.innerHTML=items.length?items.map(x=>'<div class="feeditem"><div class="thumb">'+(x.image?'<img src="'+x.image+'" alt="" loading="lazy">':'✦')+'</div><div class="feedcopy"><b>'+escapeCatalogText(x.item)+'</b><small>'+escapeCatalogText(x.name)+' · '+fmt(x.price)+' C</small></div></div>').join(""):'<div class="feed-empty">Пока нет новых выпадений.<br>Открой кейс — результат появится здесь.</div>';
+  }
+ }catch(e){}
+}
+async function sendPresence(){try{await fetch("/api/presence/"+encodeURIComponent(agentId),{method:"POST",cache:"no-store"})}catch(e){}}
+sendPresence();refreshLiveSidebar();setInterval(sendPresence,20000);setInterval(refreshLiveSidebar,7000);
+
+load();show("cases");loadSkinCatalog();
 </script><footer class="site-footer">CASER • Виртуальный режим • Предметы и баланс не передаются в Steam</footer></body></html>
