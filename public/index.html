@@ -820,20 +820,35 @@ body.case-detail-open main{padding:0!important}
 /* Upgrade wheel: chance sector rotates under a fixed top pointer; price cards use compact CASER-like labels */
 #upgrade .dial{isolation:isolate}
 #upgrade .dial:before{
- content:"";
- inset:18px!important;
- background:conic-gradient(from 90deg,#ed8500 0 var(--chance,0%),#17191a var(--chance,0%) 100%)!important;
+ content:"";inset:18px!important;border-radius:50%;
+ background:conic-gradient(from 90deg,#ed8500 0 var(--chance,0%),#252b34 var(--chance,0%) 100%)!important;
  box-shadow:0 0 16px rgba(237,133,0,.18);
 }
 #upgrade .dial-pointer{
- top:-11px!important;bottom:auto!important;
- border-left:13px solid transparent!important;
- border-right:13px solid transparent!important;
- border-top:33px solid #ffad17!important;
- border-bottom:0!important;
+ position:absolute!important;z-index:5!important;left:50%!important;top:50%!important;bottom:auto!important;
+ width:0!important;height:0!important;
+ border-left:12px solid transparent!important;border-right:12px solid transparent!important;
+ border-bottom:94px solid #ffad17!important;border-top:0!important;
+ transform:translate(-50%,-100%) rotate(0deg);transform-origin:50% 100%!important;
+ filter:drop-shadow(0 2px 5px #000)!important;
 }
-#upgrade .dial.spinning:before{animation:caserWheelSpin 4.6s cubic-bezier(.10,.72,.10,1) forwards!important}
-@keyframes caserWheelSpin{from{transform:rotate(0deg)}to{transform:rotate(var(--spin-to,1800deg))}}
+#upgrade .dial.spinning .dial-pointer{animation:caserPointerSpin 4.6s cubic-bezier(.10,.72,.10,1) forwards!important}
+@keyframes caserPointerSpin{from{transform:translate(-50%,-100%) rotate(0deg)}to{transform:translate(-50%,-100%) rotate(var(--spin-to,1800deg))}}
+#upgrade .dialin{display:grid!important;place-items:center!important}
+#upgrade .dialin .dial-logo{font-size:38px!important;color:#f0a344!important}
+#upgrade .chance-readout{display:flex;flex-direction:column;align-items:center;gap:3px;margin-top:12px;min-height:43px}
+#upgrade .chance-readout strong{font-size:25px;line-height:1;color:#f2b45d;font-weight:950;font-variant-numeric:tabular-nums}
+#upgrade .chance-readout small{font-size:10px;letter-spacing:.8px;color:#aeb7c2;text-transform:uppercase}
+#upgrade .gauge{justify-content:center!important}
+.case-open-options{display:flex;flex-direction:column;gap:9px;align-items:center;margin-top:4px}
+.case-quantity{display:flex;gap:5px;align-items:center;justify-content:center}
+.case-quantity button{min-width:34px;height:30px;padding:0 9px;background:rgba(10,15,21,.78);border:1px solid rgba(255,255,255,.2);border-radius:2px;color:#d8dee6;font-size:11px;font-weight:900;cursor:pointer}
+.case-quantity button.active{background:#d9933d;border-color:#f2b45d;color:#171a1f}
+.case-open-actions{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
+.case-quick-cta{height:45px;padding:0 18px;border:1px solid #e6a44e;background:rgba(18,24,32,.88);color:#f2bd72;border-radius:2px;font-size:11px;font-weight:950;letter-spacing:.8px;cursor:pointer}
+.case-quick-cta:hover{background:#29313b}
+#quickSpinButton:disabled{opacity:.55;cursor:not-allowed}
+@media(max-width:760px){#upgrade .dial-pointer{border-bottom-width:82px!important}.case-quantity button{min-width:30px;padding:0 7px}.case-open-actions{width:100%}.case-open-cta{min-width:180px!important}}
 .upgrade-lists .item{padding:21px 7px 8px!important}
 .upgrade-lists .item .item-price{
  position:absolute;z-index:2;top:5px;right:6px;
@@ -963,7 +978,20 @@ body:before{filter:brightness(.42) saturate(.92)!important;transform:none!import
      <div class="case-scene-kicker">COUNTER-STRIKE 2 CASE</div>
      <h1 id="caseSceneTitle">КЕЙС</h1>
      <div class="case-scene-price" id="casePrice"></div>
-     <button class="case-open-cta" id="spinButton" type="button">ОТКРЫТЬ КЕЙС</button>
+     <div class="case-open-options">
+      <div class="case-quantity" aria-label="Количество кейсов">
+       <button type="button" data-case-count="1" class="active">1</button>
+       <button type="button" data-case-count="2">2</button>
+       <button type="button" data-case-count="3">3</button>
+       <button type="button" data-case-count="4">4</button>
+       <button type="button" data-case-count="5">5</button>
+       <button type="button" data-case-count="10">10</button>
+      </div>
+      <div class="case-open-actions">
+       <button class="case-open-cta" id="spinButton" type="button">ОТКРЫТЬ КЕЙС</button>
+       <button class="case-quick-cta" id="quickSpinButton" type="button">БЫСТРО</button>
+      </div>
+     </div>
      <div class="case-notice" id="caseNotice" hidden></div>
     </div>
     <div class="case-scene-object">
@@ -994,9 +1022,10 @@ body:before{filter:brightness(.42) saturate(.92)!important;transform:none!import
   <div class="gauge">
    <div class="dial" id="upgradeDial">
     <span class="dial-mark dial-top">100%</span><span class="dial-mark dial-left">50%</span><span class="dial-mark dial-right">50%</span><span class="dial-mark dial-bottom">0%</span>
-    <div class="dial-pointer"></div>
-    <div class="dialin"><div class="dial-logo">✦</div><div class="dial-value"><span id="chance">50.00%</span><small id="chanceLabel">Средний шанс</small></div></div>
+    <div class="dial-pointer" id="upgradePointer"></div>
+    <div class="dialin"><div class="dial-logo">✦</div></div>
    </div>
+   <div class="chance-readout"><strong id="chance">50.00%</strong><small id="chanceLabel">Средний шанс</small></div>
   </div>
   <div class="pick to-pick">
    <div class="picktitle">ЖЕЛАЕМЫЙ ПРЕДМЕТ <span id="toValue">—</span></div>
@@ -1143,68 +1172,76 @@ $("casegrid").addEventListener("click",e=>{const c=e.target.closest("[data-case]
 $("customgrid").addEventListener("click",e=>{const c=e.target.closest("[data-case]");if(c)openCase(+c.dataset.case,"custom")});
 $("featuredCasesGrid").addEventListener("click",e=>{const c=e.target.closest("[data-case]");if(c)openCase(+c.dataset.case,"featured")});
 
-function spin(){
+let selectedCaseCount=1;
+document.querySelectorAll("[data-case-count]").forEach(button=>button.addEventListener("click",()=>{
+ selectedCaseCount=Number(button.dataset.caseCount)||1;
+ document.querySelectorAll("[data-case-count]").forEach(x=>x.classList.toggle("active",x===button));
+ const c=activeCaseData;
+ $("spinButton").textContent=selectedCaseCount===1?"ОТКРЫТЬ КЕЙС":"ОТКРЫТЬ "+selectedCaseCount+" КЕЙСА";
+ $("quickSpinButton").textContent="БЫСТРО · "+selectedCaseCount;
+ if(c)$("casePrice").textContent="СТОИМОСТЬ "+selectedCaseCount+" ОТКРЫТИЙ  "+fmt(c[2]*selectedCaseCount)+" C";
+}));
+function spin(quick=false){
  if(rolling)return;
  const c=activeCaseData;if(!c)return;
- if(data.balance<c[2]){
-  $("caseNotice").textContent="НЕДОСТАТОЧНО СРЕДСТВ · ПОПОЛНИ БАЛАНС, ЧТОБЫ ОТКРЫТЬ КЕЙС";
-  $("caseNotice").hidden=false;
-  $("depositModal").classList.add("show");
-  return;
+ const count=Math.max(1,Math.min(10,selectedCaseCount||1));
+ const totalCost=c[2]*count;
+ if(data.balance<totalCost){
+  $("caseNotice").textContent="НЕДОСТАТОЧНО СРЕДСТВ · НУЖНО "+fmt(totalCost)+" C";
+  $("caseNotice").hidden=false;$("depositModal").classList.add("show");return;
  }
- rolling=true;
- data.balance-=c[2];save();
- $("spinButton").disabled=true;
- $("spinButton").textContent="ОТКРЫВАЕТСЯ…";
+ rolling=true;data.balance-=totalCost;save();
+ $("spinButton").disabled=true;$("quickSpinButton").disabled=true;
+ $("spinButton").textContent="ОТКРЫВАЕТСЯ…";$("quickSpinButton").textContent="ОТКРЫВАЕТСЯ…";
  $("caseNotice").hidden=true;
- $("caseOpening").hidden=false;
- $("spinHint").textContent="Лента набирает скорость…";
+ const wins=Array.from({length:count},()=>drops[Math.floor(Math.random()*drops.length)]);
+ winningDrop=wins[wins.length-1];
+ const finish=(animatedTarget=null)=>{
+  if(animatedTarget)animatedTarget.classList.add("is-winning");
+  rolling=false;
+  data.items.unshift(...wins);save();
+  $("caseOpening").hidden=true;$("caseScene").hidden=false;
+  $("spinButton").disabled=false;$("quickSpinButton").disabled=false;
+  $("spinButton").textContent=count===1?"ОТКРЫТЬ ЕЩЁ РАЗ":"ОТКРЫТЬ ЕЩЁ "+count;
+  $("quickSpinButton").textContent="БЫСТРО · "+count;
+  $("caseNotice").hidden=true;
+  $("dropTitle").textContent=count===1?"КЕЙС ОТКРЫТ":"ОТКРЫТО КЕЙСОВ: "+count;
+  $("dropIcon").innerHTML=winningDrop[4]?'<img src="'+winningDrop[4]+'" style="width:190px;max-width:100%;height:120px;object-fit:contain" alt="">':"✦";
+  $("dropName").textContent=count===1?winningDrop[0]:(winningDrop[0]+" и ещё "+(count-1));
+  $("dropDesc").textContent="Получено предметов: "+count+" · Общая стоимость: C "+fmt(wins.reduce((sum,item)=>sum+(Number(item[2])||0),0));
+  $("dropModal").classList.add("show");
+ };
+ if(quick){finish();return}
+ $("caseScene").hidden=false;$("caseOpening").hidden=false;
+ $("spinHint").textContent=count===1?"Лента набирает скорость…":"Открываем "+count+" кейса · показываем последний результат";
  const winningIndex=48;
  const list=Array.from({length:55},()=>drops[Math.floor(Math.random()*drops.length)]);
- winningDrop=drops[Math.floor(Math.random()*drops.length)];
  list[winningIndex]=winningDrop;
  const reel=$("roulette"),wrap=reel.parentElement;
- reel.style.transition="none";
- reel.style.transform="translate3d(0,0,0)";
+ reel.style.transition="none";reel.style.transform="translate3d(0,0,0)";
  reel.innerHTML=list.map((item,index)=>reelCard(item,index)).join("");
  void reel.offsetWidth;
  const target=reel.querySelector('[data-reel-index="'+winningIndex+'"]');
- let finished=false,fallbackTimer=null;
- const finish=()=>{
-  if(finished)return;finished=true;
-  if(fallbackTimer)clearTimeout(fallbackTimer);
-  reel.removeEventListener("transitionend",onTransitionEnd);
-  if(target)target.classList.add("is-winning");
-  rolling=false;
-  data.items.unshift(winningDrop);save();
-  $("caseOpening").hidden=true;
-  $("caseScene").hidden=false;
-  $("spinButton").disabled=false;
-  $("spinButton").textContent="ОТКРЫТЬ ЕЩЁ РАЗ";
-  $("caseNotice").hidden=true;
-  $("dropTitle").textContent="КЕЙС ОТКРЫТ";
-  $("dropIcon").innerHTML=winningDrop[4]?'<img src="'+winningDrop[4]+'" style="width:190px;max-width:100%;height:120px;object-fit:contain" alt="">':"✦";
-  $("dropName").textContent=winningDrop[0];
-  $("dropDesc").textContent="Стоимость предмета: C "+fmt(winningDrop[2]);
-  $("dropModal").classList.add("show");
- };
- const onTransitionEnd=event=>{if(event.target===reel&&event.propertyName==="transform")finish()};
- if(!target||!wrap){rolling=false;$("spinButton").disabled=false;return}
+ if(!target||!wrap){finish();return}
  const cardRect=target.getBoundingClientRect(),wrapRect=wrap.getBoundingClientRect();
  const desired=(cardRect.left+cardRect.width/2)-(wrapRect.left+wrap.clientWidth/2);
  const maxTranslate=Math.max(0,reel.scrollWidth-wrap.clientWidth);
  const translate=Math.max(0,Math.min(desired,maxTranslate));
  const duration=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches?0:7200;
+ let finished=false,fallbackTimer=null;
+ const done=()=>{if(finished)return;finished=true;if(fallbackTimer)clearTimeout(fallbackTimer);reel.removeEventListener("transitionend",onTransitionEnd);finish(target)};
+ const onTransitionEnd=event=>{if(event.target===reel&&event.propertyName==="transform")done()};
  reel.addEventListener("transitionend",onTransitionEnd);
- fallbackTimer=setTimeout(finish,duration+1300);
+ fallbackTimer=setTimeout(done,duration+1300);
  requestAnimationFrame(()=>requestAnimationFrame(()=>{
   reel.style.transition=duration===0?"none":"transform "+duration+"ms cubic-bezier(.08,.72,.12,1)";
   reel.style.transform="translate3d(-"+translate+"px,0,0)";
-  if(duration===0)setTimeout(finish,50);
+  if(duration===0)setTimeout(done,50);
  }));
 }
+
 $("caseBack").onclick=()=>{if(!rolling)show("cases")};
-$("spinButton").onclick=spin;$("closeDrop").onclick=()=>$("dropModal").classList.remove("show");
+$("spinButton").onclick=()=>spin(false);$("quickSpinButton").onclick=()=>spin(true);$("closeDrop").onclick=()=>$("dropModal").classList.remove("show");
 let selectedTarget=null,upgradeBusy=false,selectedItems=[],upgradeMultiplier=2,mysteryMode=false,chancePreset=null;
 function upgradeChance(stake,targetPrice){if(stake<=0||targetPrice<=0)return 0;return Math.min(95,95*stake/targetPrice);}
 $("stakeValue").addEventListener("input",()=>{
@@ -1354,10 +1391,10 @@ $("upgradeAction").onclick=()=>{
  const chance=upgradeChance(stake,target[2]),won=Math.random()*100<chance;
  $("chance").textContent=chance.toFixed(2)+"%";
  upgradeBusy=true;$("upgradeAction").disabled=true;
- const dial=$("upgradeDial");
+ const dial=$("upgradeDial"),pointer=$("upgradePointer");
  const chancePart=Math.max(0,Math.min(95,chance))/100;
- const landingAngle=won?90+Math.random()*chancePart*360:90+chancePart*360+Math.random()*(1-chancePart)*360;
- const pointerAngle=0;const finalAngle=(pointerAngle-landingAngle+360)%360;
+ const landingAngle=won?Math.random()*chancePart*360:chancePart*360+Math.random()*(1-chancePart)*360;
+ const finalAngle=(360-landingAngle)%360;
  dial.style.setProperty("--chance",Math.max(0,Math.min(95,chance))+"%");
  dial.style.setProperty("--spin-to",(360*5+finalAngle)+"deg");
  dial.classList.remove("spinning");void dial.offsetWidth;dial.classList.add("spinning");
