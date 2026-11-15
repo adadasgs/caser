@@ -1360,8 +1360,16 @@ body:after{background:rgba(47,52,55,.30)!important;backdrop-filter:none!importan
  </div>
  <div class="upgrade-lists">
   <div class="panel inventory-list"><div class="panelhead"><span>▣　Мои предметы</span><button class="panel-sort" type="button">↕</button></div><div class="items" id="myItems"></div></div>
-  <div class="panel catalog-list"><div class="panelhead"><span>⌃　Выбрать предмет</span><div class="catalog-head-tools">Цена　От　До　⌕</div></div>
-   <div class="catalog-filters"><input id="itemSearch" type="search" placeholder="Поиск предмета"><select id="itemCategory"><option value="all">Все категории</option><option value="weapons">Оружие</option><option value="knives">Ножи</option><option value="gloves">Перчатки</option><option value="stickers">Наклейки</option><option value="agents">Агенты</option><option value="charms">Брелоки</option></select><input id="priceFrom" type="number" min="0" placeholder="От"><input id="priceTo" type="number" min="0" placeholder="До"><select id="itemSort"><option value="cheap">Цена ↑</option><option value="expensive">Цена ↓</option></select></div>
+  <div class="panel catalog-list"><div class="panelhead"><span>⌃　Выбрать предмет</span><div class="catalog-head-tools">
+    <button id="catalogSortToggle" class="catalog-icon-button" type="button" aria-label="Сортировка">↕</button>
+    <span class="catalog-price-label">Цена</span>
+    <input id="priceFrom" type="number" min="0" placeholder="От" aria-label="Цена от">
+    <input id="priceTo" type="number" min="0" placeholder="До" aria-label="Цена до">
+    <button id="catalogSearchToggle" class="catalog-icon-button" type="button" aria-label="Поиск">⌕</button>
+    <input id="itemSearch" type="search" placeholder="Поиск предмета" hidden>
+    <select id="itemCategory" hidden><option value="all">Все категории</option><option value="weapons">Оружие</option><option value="knives">Ножи</option><option value="gloves">Перчатки</option><option value="stickers">Наклейки</option><option value="agents">Агенты</option><option value="charms">Брелоки</option></select>
+    <select id="itemSort" hidden><option value="cheap">Цена ↑</option><option value="expensive">Цена ↓</option></select>
+   </div></div>
    <div class="catalog-status" id="catalogStatus">Загружаем полный каталог CS2…</div><div class="items" id="chooseItems"></div><div class="catalog-pagination"><span id="catalogCount">Загрузка…</span><button id="catalogMore" type="button" hidden>ПОКАЗАТЬ ЕЩЁ</button></div>
   </div>
  </div>
@@ -1604,7 +1612,14 @@ $("stakeValue").addEventListener("input",()=>{
  renderChooseItems(true);refreshUpgrade();
 });
 $("stakeSlider")?.addEventListener("input",()=>{$("stakeValue").value=$("stakeSlider").value;renderChooseItems(true);refreshUpgrade()});
-["itemSearch","itemCategory","priceFrom","priceTo","itemSort"].forEach(id=>$(id)?.addEventListener("input",()=>renderChooseItems(true)));$("catalogMore")?.addEventListener("click",()=>{catalogPage++;renderChooseItems()});
+["itemSearch","itemCategory","priceFrom","priceTo","itemSort"].forEach(id=>$(id)?.addEventListener("input",()=>renderChooseItems(true)));
+$("catalogSearchToggle")?.addEventListener("click",()=>{
+ const search=$("itemSearch");search.hidden=!search.hidden;
+ if(!search.hidden)search.focus();else{search.value="";renderChooseItems(true)}
+});
+$("catalogSortToggle")?.addEventListener("click",()=>{
+ const select=$("itemSort");select.value=select.value==="cheap"?"expensive":"cheap";renderChooseItems(true);
+});$("catalogMore")?.addEventListener("click",()=>{catalogPage++;renderChooseItems()});
 $("mysteryButton")?.addEventListener("click",()=>{mysteryMode=!mysteryMode;if(mysteryMode)selectedTarget=null;renderChooseItems();refreshUpgrade();toast(mysteryMode?"Mystery Upgrade включён":"Обычный апгрейд включён")});
 function escapeCatalogText(value){
  return String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
