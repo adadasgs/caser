@@ -816,6 +816,43 @@ body.case-detail-open main{padding:0!important}
 }
 .case-quick-search::placeholder{color:#c2c8c5}
 .case-quick-search[hidden]{display:none!important}
+ 
+/* Upgrade wheel: chance sector rotates under a fixed top pointer; price cards use compact CASER-like labels */
+#upgrade .dial{isolation:isolate}
+#upgrade .dial:before{
+ content:"";
+ inset:18px!important;
+ background:conic-gradient(from 90deg,#ed8500 0 var(--chance,0%),#17191a var(--chance,0%) 100%)!important;
+ box-shadow:0 0 16px rgba(237,133,0,.18);
+}
+#upgrade .dial-pointer{
+ top:-11px!important;bottom:auto!important;
+ border-left:13px solid transparent!important;
+ border-right:13px solid transparent!important;
+ border-top:33px solid #ffad17!important;
+ border-bottom:0!important;
+}
+#upgrade .dial.spinning:before{animation:caserWheelSpin 4.6s cubic-bezier(.10,.72,.10,1) forwards!important}
+@keyframes caserWheelSpin{from{transform:rotate(0deg)}to{transform:rotate(var(--spin-to,1800deg))}}
+.upgrade-lists .item{padding:21px 7px 8px!important}
+.upgrade-lists .item .item-price{
+ position:absolute;z-index:2;top:5px;right:6px;
+ padding:3px 5px;background:rgba(25,30,35,.88);
+ color:#fff!important;border:1px solid rgba(255,255,255,.2);
+ font-size:9px!important;font-weight:950;line-height:1.1;border-radius:2px;
+}
+.upgrade-lists .item .item-wear{
+ position:absolute;z-index:2;top:6px;left:7px;
+ color:#343a40;font-size:8px;font-weight:950;letter-spacing:.35px;
+}
+.upgrade-lists .item .weapon{height:61px!important;margin-top:3px}
+.upgrade-lists .item b{padding-top:3px;font-size:9px!important;min-height:22px}
+.upgrade-lists .item.selected .item-price{background:#1e3029;color:#fff!important;border-color:#23c98d}
+@media(max-width:760px){
+ #upgrade .dial-pointer{top:-9px!important;border-left-width:10px!important;border-right-width:10px!important;border-top-width:25px!important}
+ .upgrade-lists .item .weapon{height:55px!important}
+}
+
 </style></head><body>
 <header class="top"><div class="brand"><img src="https://caser.one/cdn/fa/icons/header/logo_text_ru.webp" alt="CASER"></div><nav class="nav"><button data-view="inventory">ИНВЕНТАРЬ</button><button data-view="cases">КЕЙСЫ</button><button class="active" data-view="upgrade">АПГРЕЙДЫ</button><button data-view="rewards">НАГРАДЫ</button><button data-view="profile">ПРОФИЛЬ</button></nav><div class="account"><span class="wallet">⬡ <b id="balance">0</b> C</span><button class="plus" id="openDeposit">+</button><button class="avatar" id="avatar" title="Открыть профиль">🥷</button></div></header>
 <div class="layout"><aside class="left"><div class="online">ONLINE <b><i>◉</i> 2 214</b></div><div class="sidebar-tabs"><button class="active" type="button">▦</button><button type="button">♨</button></div><div class="feed" id="feed"></div><div class="social">➤　◎　✦</div></aside><main><div class="subnav" id="caseSubnav"><button class="subnav-search" id="caseSearchToggle" type="button" aria-label="Поиск кейсов">⌕</button><input id="caseSearch" class="case-quick-search" type="search" placeholder="Поиск кейсов" hidden><button class="active" data-case-filter="all">ВСЕ КЕЙСЫ</button><button data-case-filter="authors">АВТОРСКИЕ КЕЙСЫ</button></div>
@@ -1107,6 +1144,10 @@ function catalogCategory(item){
  if(type.includes("charm")||name.includes("charm")||name.includes("keychain"))return "charms";
  return "weapons";
 }
+function wearLabel(name){
+ const match=String(name||"").match(/\\((Factory New|Minimal Wear|Field-Tested|Well-Worn|Battle-Scarred)\\)/i);
+ return match?({ "Factory New":"FN","Minimal Wear":"MW","Field-Tested":"FT","Well-Worn":"WW","Battle-Scarred":"BS"}[match[1]]||"CS2"):"CS2";
+}
 function renderChooseItems(resetPage=false){
  if(resetPage)catalogPage=1;
  const stake=selectedItems.reduce((s,x)=>s+(Number(x[2])||0),0)+Math.max(0,Math.floor(Number($("stakeValue").value)||0));
@@ -1124,7 +1165,7 @@ function renderChooseItems(resetPage=false){
  catalogFiltered=list;
  const visible=list.slice(0,catalogPage*catalogPageSize);
  $("chooseItems").innerHTML=visible.map(o=>
-  '<div class="item" data-index="'+o.i+'"><div class="weapon"><img src="'+escapeCatalogText(o.x[4])+'" alt="'+escapeCatalogText(o.x[0])+'" loading="lazy"></div><b>'+escapeCatalogText(o.x[0])+'</b><small>C '+fmt(o.x[2])+'</small></div>'
+  '<div class="item" data-index="'+o.i+'" style="--rarity:'+({legendary:"#e5a34b",epic:"#b77ce5",rare:"#668fe0",common:"#8b9aa8"}[o.x[3]]||"#8b9aa8")+'"><span class="item-wear">'+escapeCatalogText(wearLabel(o.x[0]))+'</span><span class="item-price">C '+fmt(o.x[2])+'</span><div class="weapon"><img src="'+escapeCatalogText(o.x[4])+'" alt="'+escapeCatalogText(o.x[0])+'" loading="lazy"></div><b>'+escapeCatalogText(o.x[0].replace(/\\s*\\([^)]*\\)\\s*$/,""))+'</b></div>'
  ).join("")||'<div class="empty-catalog">Нет предметов по выбранным фильтрам</div>';
  if($("catalogCount"))$("catalogCount").textContent="Показано "+visible.length.toLocaleString("ru-RU")+" из "+list.length.toLocaleString("ru-RU")+" предметов";
  if($("catalogMore"))$("catalogMore").hidden=visible.length>=list.length;
@@ -1233,7 +1274,7 @@ $("upgradeAction").onclick=()=>{
  const dial=$("upgradeDial");
  const chancePart=Math.max(0,Math.min(95,chance))/100;
  const landingAngle=won?90+Math.random()*chancePart*360:90+chancePart*360+Math.random()*(1-chancePart)*360;
- const finalAngle=(180-landingAngle+360)%360;
+ const pointerAngle=0;const finalAngle=(pointerAngle-landingAngle+360)%360;
  dial.style.setProperty("--chance",Math.max(0,Math.min(95,chance))+"%");
  dial.style.setProperty("--spin-to",(360*5+finalAngle)+"deg");
  dial.classList.remove("spinning");void dial.offsetWidth;dial.classList.add("spinning");
