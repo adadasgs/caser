@@ -884,6 +884,15 @@ body:after{backdrop-filter:none!important;filter:none!important}
 .case-roulette-window{background:rgba(10,15,21,.96)!important}
 .case-content-item{filter:none!important;backdrop-filter:none!important}
 
+
+/* Simulated activity is explicitly marked as demo, never presented as real users */
+.online{position:relative!important}
+.online:after{content:"DEMO";margin-left:8px;padding:2px 5px;border:1px solid rgba(235,166,76,.55);color:#f0b35e;font-size:8px;font-weight:900;letter-spacing:1px}
+.feed:before{content:"ДЕМО-ВЫПАДЕНИЯ · СИМУЛЯЦИЯ";display:block;padding:8px 11px;background:rgba(18,24,32,.96);color:#e7ad5e;font-size:9px;font-weight:900;letter-spacing:.8px;border-bottom:1px solid rgba(255,255,255,.12)}
+.online b{font-variant-numeric:tabular-nums}
+.feeditem{animation:feedEnter .35s ease both}
+@keyframes feedEnter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+
 </style></head><body>
 <header class="top"><div class="brand"><img src="https://caser.one/cdn/fa/icons/header/logo_text_ru.webp" alt="CASER"></div><nav class="nav"><button data-view="inventory">ИНВЕНТАРЬ</button><button data-view="cases">КЕЙСЫ</button><button class="active" data-view="upgrade">АПГРЕЙДЫ</button><button data-view="rewards">НАГРАДЫ</button><button data-view="profile">ПРОФИЛЬ</button></nav><div class="account"><span class="wallet">⬡ <b id="balance">0</b> C</span><button class="plus" id="openDeposit">+</button><button class="avatar" id="avatar" title="Открыть профиль">🥷</button></div></header>
 <div class="layout"><aside class="left"><div class="online">ONLINE <b><i>◉</i> 2 214</b></div><div class="sidebar-tabs"><button class="active" type="button">▦</button><button type="button">♨</button></div><div class="feed" id="feed"></div><div class="social">➤　◎　✦</div></aside><main><div class="subnav" id="caseSubnav"><button class="subnav-search" id="caseSearchToggle" type="button" aria-label="Поиск кейсов">⌕</button><input id="caseSearch" class="case-quick-search" type="search" placeholder="Поиск кейсов" hidden><button class="active" data-case-filter="all">ВСЕ КЕЙСЫ</button><button data-case-filter="authors">АВТОРСКИЕ КЕЙСЫ</button></div>
@@ -1063,7 +1072,19 @@ $("caseSearchToggle")?.addEventListener("click",()=>{
 });
 ["casePriceFrom","casePriceTo","caseSort"].forEach(id=>{$(id)?.addEventListener("input",renderCases);$(id)?.addEventListener("change",renderCases)});
 renderCases();
-$("feed").innerHTML=drops.slice(0,10).map((d,i)=>'<div class="feeditem"><div class="thumb"><img src="'+d[4]+'" alt=""></div><div><b>'+d[0]+'</b><small>'+names[i%names.length]+'</small></div></div>').join("");
+
+const demoFeedPool=drops.slice();
+let demoFeedOffset=0;
+function renderDemoFeed(){
+ const onlineCount=1180+Math.floor(Math.random()*260);
+ const onlineNode=document.querySelector(".online b");
+ if(onlineNode)onlineNode.innerHTML='<i>◉</i> '+onlineCount.toLocaleString("ru-RU");
+ const rows=Array.from({length:10},(_,i)=>demoFeedPool[(demoFeedOffset+i)%demoFeedPool.length]);
+ $("feed").innerHTML=rows.map((d,i)=>'<div class="feeditem" style="animation-delay:'+(i*35)+'ms"><div class="thumb"><img src="'+d[4]+'" alt="" loading="lazy"></div><div><b>'+d[0]+'</b><small>'+names[(demoFeedOffset+i)%names.length]+' · '+(i===0?'только что':(i*2+1)+' сек. назад')+'</small></div></div>').join("");
+}
+renderDemoFeed();
+setInterval(()=>{demoFeedOffset=(demoFeedOffset+1)%demoFeedPool.length;renderDemoFeed()},6500);
+
 function reelCard(d,index){return '<div class="reel-card '+d[3]+'"'+(Number.isInteger(index)?' data-reel-index="'+index+'"':'')+'><div class="weapon"><img src="'+d[4]+'" alt="'+d[0]+'" loading="eager"></div><small>'+d[0]+'</small><small>C '+fmt(d[2])+'</small></div>'}
 function openCase(i,source="custom"){
  const c=source==="featured"?featuredCases[i]:cases[i];if(!c)return;
