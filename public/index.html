@@ -1088,10 +1088,130 @@ body:after{background:linear-gradient(180deg,rgba(8,11,16,.52),rgba(8,11,16,.82)
 .case-scene:before{background:linear-gradient(90deg,rgba(8,12,17,.76),rgba(8,12,17,.28) 60%,rgba(8,12,17,.38)),linear-gradient(0deg,rgba(10,15,21,.85),transparent 42%)!important}
 @media(max-width:1100px){#featuredCasesSection .featured-cases-grid,#authorsSection .grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
 @media(max-width:760px){#featuredCasesSection .featured-cases-grid,#authorsSection .grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}#authorsSection .case-toolbar{grid-template-columns:1fr 1fr!important}#authorsSection .case-toolbar input:first-child{grid-column:1/-1!important}}
-</style></head><body>
-<header class="top"><div class="brand"><img src="https://caser.one/cdn/fa/icons/header/logo_text_ru.webp" alt="CASER"></div><nav class="nav"><button data-view="inventory">ИНВЕНТАРЬ</button><button data-view="cases">КЕЙСЫ</button><button class="active" data-view="upgrade">АПГРЕЙДЫ</button><button data-view="rewards">НАГРАДЫ</button><button data-view="profile">ПРОФИЛЬ</button></nav><div class="account"><span class="wallet">⬡ <b id="balance">0</b> C</span><button class="plus" id="openDeposit">+</button><button class="avatar" id="avatar" title="Открыть профиль">🥷</button></div></header>
+</style>
+/* CASER.one reference rebuild — first viewport */
+:root{--caser-blue:#53b7e7;--caser-green:#19c98a;--caser-dark:#292e31}
+html,body{min-height:100%;background:#62696d!important}
+body{font-family:"Arial Narrow",Arial,sans-serif!important;background:transparent!important}
+body:before{
+ background:url("https://caser.one/cdn/fa/images/header/headerBG.webp") center 42%/cover no-repeat!important;
+ filter:blur(3px) brightness(.74) saturate(.72)!important;transform:scale(1.035)!important
+}
+body:after{background:rgba(47,52,55,.30)!important;backdrop-filter:none!important}
+.top{
+ height:58px!important;padding:0 20px!important;gap:24px!important;
+ background:linear-gradient(180deg,rgba(65,70,73,.96),rgba(51,56,59,.96))!important;
+ border-bottom:1px solid rgba(255,255,255,.13)!important
+}
+.brand{width:200px!important;flex:0 0 200px!important}
+.brand img{width:166px!important;max-height:44px!important;object-fit:contain!important}
+.nav{justify-content:center!important;gap:0!important}
+.nav button{
+ min-width:150px!important;padding:0 24px!important;font-family:"Arial Narrow",Arial,sans-serif!important;
+ font-size:19px!important;font-weight:900!important;color:#f1f3f4!important;
+ border-bottom:0!important;border-right:1px solid rgba(255,255,255,.2)!important;
+ letter-spacing:.1px!important
+}
+.nav button:first-child{border-left:1px solid rgba(255,255,255,.2)!important}
+.nav button.active,.nav button:hover{color:var(--caser-blue)!important;background:rgba(30,90,120,.12)!important;border-color:rgba(255,255,255,.2)!important}
+.account{gap:10px!important}
+.account-stat{display:flex;align-items:center;gap:5px;color:#75d6fa;font-size:15px;font-weight:900;white-space:nowrap}
+.account-stat b{font-size:13px;color:#fff}
+.plus{width:38px!important;height:38px!important;border-radius:2px!important;background:#10b981!important;color:#fff!important;font-size:25px!important}
+.notify{position:relative;width:34px;height:38px;background:transparent;color:#eef3f7;font-size:22px}
+.notify i{position:absolute;right:0;top:0;width:8px;height:8px;border-radius:50%;background:#ee4757}
+.avatar{width:38px!important;height:38px!important;border-radius:2px!important;background:#29343c!important;border:1px solid #64737b!important}
+.layout{grid-template-columns:240px minmax(0,1fr)!important;min-height:calc(100vh - 58px)!important}
+.left{background:rgba(37,42,44,.88)!important;border-right:1px solid rgba(255,255,255,.12)!important}
+.online{height:44px!important;padding:0 18px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;color:#e2e6e9!important;font-size:15px!important;letter-spacing:.2px!important}
+.online b{color:#e9edf0!important;font-size:16px!important}
+.sidebar-tabs{height:44px!important;background:rgba(20,27,30,.35)!important;border-bottom:1px solid rgba(255,255,255,.12)!important}
+.sidebar-tabs button{flex:1!important;border-radius:0!important;color:#b8c2c7!important}
+.sidebar-tabs button.active{background:rgba(74,179,226,.24)!important;color:#84dbff!important}
+.feed{padding:6px 7px!important}
+.feed:before{display:none!important}
+.feeditem{height:77px!important;min-height:77px!important;padding:8px 5px!important;gap:8px!important;border-bottom:1px solid rgba(255,255,255,.09)!important}
+.feeditem .thumb{width:80px!important;height:58px!important;flex:0 0 80px!important;background:linear-gradient(145deg,#42494e,#23292d)!important;border-bottom:3px solid #d4a34e!important;border-radius:0!important}
+.feedcopy b{font-size:11px!important;color:#fff!important}
+.feedcopy small{font-size:10px!important;color:#b9c1c5!important}
+.feed-empty{padding:18px 10px!important;color:#d0d6d9!important}
+.social{height:48px!important;padding:12px!important;color:#b9c9d1!important}
+.subnav{
+ height:44px!important;padding:0 0 0 430px!important;gap:8px!important;
+ background:rgba(58,64,67,.91)!important;border-bottom:1px solid rgba(255,255,255,.10)!important
+}
+.subnav button{font-size:12px!important;color:#f0f2f4!important;padding:9px 13px!important}
+.subnav button.active{background:rgba(91,177,218,.35)!important;color:#a6e6ff!important;border-radius:2px!important}
+.subnav-search{font-size:24px!important;width:34px!important;color:#fff!important}
+.view#cases{max-width:1600px!important;margin:0 auto!important;padding:52px clamp(26px,7.2vw,118px) 60px!important;min-height:calc(100vh - 102px)!important}
+.featured-heading{font-size:21px!important;color:#f6f7f8!important;font-weight:900!important;margin:0 0 18px!important;letter-spacing:.3px!important}
+.featured-cases-section{margin-bottom:44px!important}
+.featured-cases-grid{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:12px!important}
+.featured-case{
+ position:relative!important;overflow:hidden!important;border:1px solid rgba(255,255,255,.12)!important;
+ border-radius:0!important;background:rgba(42,46,48,.52)!important;box-shadow:none!important
+}
+.featured-case-art{
+ height:auto!important;aspect-ratio:1.39!important;background-color:#777d80!important;
+ background-repeat:no-repeat!important
+}
+.featured-case-info{
+ min-height:61px!important;padding:8px 12px 9px!important;
+ background:rgba(48,50,51,.70)!important;color:#fff!important
+}
+.featured-case-info b{font-size:13px!important;font-weight:800!important;color:#fff!important}
+.featured-case-info span{font-size:13px!important;color:#fff!important;font-weight:900!important;margin-top:5px!important}
+.featured-case .new{
+ position:absolute!important;top:0!important;left:0!important;z-index:3!important;
+ background:#35aee8!important;color:#fff!important;border-radius:0!important;
+ padding:4px 7px!important;font-size:11px!important;font-weight:950!important
+}
+.author-head{margin:0 0 17px!important;align-items:center!important}
+.author-head h2{font-size:24px!important;color:#f2f4f5!important;font-family:"Arial Narrow",Arial,sans-serif!important;font-weight:900!important}
+.author-head h2 span{font-size:32px!important;color:#fff!important}
+.create-case-link{height:40px!important;padding:0 16px!important;background:rgba(10,40,30,.48)!important;border:1px solid #13c78c!important;color:#23d39b!important;border-radius:0!important;font-size:13px!important;font-weight:900!important}
+.authors-section .case-toolbar{display:none!important}
+.authors-section.standalone .case-toolbar{display:grid!important}
+.authors-section .grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:12px!important}
+.authors-section .case{border-radius:0!important;background:rgba(57,61,62,.75)!important;border:1px solid rgba(255,255,255,.12)!important;box-shadow:none!important}
+.authors-section .caseart{aspect-ratio:1.39!important;background:rgba(118,123,125,.8)!important}
+.authors-section .casebox img{object-fit:contain!important;padding:8px!important}
+.authors-section .caseinfo{background:rgba(50,53,54,.78)!important}
+.case-quality,.case-opens{color:#edf0f1!important}
+.case-scene-object.featured-sprite-hero:before{
+ content:"";position:absolute;z-index:1;inset:0;background-image:url("/assets/caser-new-cases.svg");
+ background-size:500% 200%;background-position:var(--sprite-x) var(--sprite-y);background-repeat:no-repeat
+}
+.case-scene-object.featured-sprite-hero .case-scene-light{z-index:0}
+.case-data-pending{padding:24px;color:#c5cbd0;font-size:13px;line-height:1.6}
+.case-notice{background:rgba(35,42,48,.88)!important;border:1px solid rgba(255,255,255,.22)!important;color:#e8edf0!important}
+.case-open-options[hidden]{display:none!important}
+@media(max-width:1150px){
+ .nav button{min-width:auto!important;padding:0 15px!important;font-size:16px!important}
+ .subnav{padding-left:240px!important}
+ .view#cases{padding-inline:32px!important}
+}
+@media(max-width:760px){
+ .top{height:56px!important;padding:0 8px!important;gap:7px!important}
+ .brand{width:auto!important;flex:0 0 92px!important}
+ .brand img{width:90px!important}
+ .nav{overflow:auto!important;justify-content:flex-start!important}
+ .nav button{min-width:max-content!important;padding:0 9px!important;font-size:11px!important}
+ .account-stat{display:none!important}
+ .layout{grid-template-columns:1fr!important}
+ .left{display:none!important}
+ .subnav{height:43px!important;padding:0 10px!important}
+ .view#cases{padding:24px 12px 40px!important}
+ .featured-cases-grid,.authors-section .grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ .featured-case-info{min-height:55px!important;padding:7px 8px!important}
+ .featured-case-info b,.featured-case-info span{font-size:11px!important}
+ .author-head h2{font-size:18px!important}
+ .create-case-link{font-size:9px!important;padding:0 7px!important}
+}
+</head><body>
+<header class="top"><div class="brand"><img src="https://caser.one/cdn/fa/icons/header/logo_text_ru.webp" alt="CASER"></div><nav class="nav"><button data-view="inventory">ИНВЕНТАРЬ</button><button class="active" data-view="cases">КЕЙСЫ</button><button data-view="upgrade">АПГРЕЙДЫ</button><button data-view="rewards">НАГРАДЫ</button></nav><div class="account"><span class="account-stat">⚒ <b>0</b></span><span class="account-stat">◈ <b id="balance">0</b></span><button class="plus" id="openDeposit">+</button><button class="notify" type="button" aria-label="Уведомления" onclick="toast('Уведомления появятся после подключения аккаунта CASER')">♟<i></i></button><button class="avatar" id="avatar" title="Открыть профиль">🥷</button></div></header>
 <div class="layout"><aside class="left"><div class="online">ONLINE <b>—</b></div><div class="sidebar-tabs"><button class="active" type="button">▦</button><button type="button">♨</button></div><div class="feed" id="feed"></div><div class="social">➤　◎　✦</div></aside><main><div class="subnav" id="caseSubnav"><button class="subnav-search" id="caseSearchToggle" type="button" aria-label="Поиск кейсов">⌕</button><input id="caseSearch" class="case-quick-search" type="search" placeholder="Поиск кейсов" hidden><button class="active" data-case-filter="all">ВСЕ КЕЙСЫ</button><button data-case-filter="authors">АВТОРСКИЕ КЕЙСЫ</button></div>
-<section class="view" id="cases">
+<section class="view active" id="cases">
  <div class="featured-cases-section" id="featuredCasesSection">
   <div class="featured-heading">NEW</div>
   <div class="featured-cases-grid" id="featuredCasesGrid"></div>
@@ -1209,7 +1329,18 @@ body:after{background:linear-gradient(180deg,rgba(8,11,16,.52),rgba(8,11,16,.82)
 <div class="modalbg" id="dropModal"><div class="modal"><div class="eyebrow">РЕЗУЛЬТАТ ОТКРЫТИЯ</div><h2 id="dropTitle">ВАШ ВЫПАВШИЙ ПРЕДМЕТ</h2><div class="result-art" id="dropIcon">✦</div><h3 id="dropName"></h3><p id="dropDesc"></p><button class="primary" id="closeDrop">ЗАБРАТЬ ПРЕДМЕТ</button></div></div><div class="toast" id="toast"></div>
 <script>
 const cases=[["Strogo ( ez )Awp","https://s3.caser.gg/cdn/custom-cases/5094783afc5db63ee8721486e0e67278-6aee5d1e53abe.webp",4.96,"High","06.11.2026",4747469],["Нож с завода за 5₱","https://s3.caser.gg/cdn/custom-cases/d22ca53d890962e83633d2bd52d681ca-6aea59a81bc38.webp",5.1,"High","06.11.2026",5767585],["Банан","https://s3.caser.gg/cdn/custom-cases/16e36584c7e2471e3c8ba89878e88372-6af0e1962bcac.png",87.11,"Medium","08.11.2026",253892],["M4A1-S Farm","https://s3.caser.gg/cdn/custom-cases/677361a5f77796e27ad774cb39df33ba-6aea2b9a1ad02.png",20.27,"Medium","03.11.2026",1935717],["ШУБА","https://s3.caser.gg/cdn/custom-cases/166f4187510fd8bdefa122ca94e75dc7-6ae9a309d33f6.png",34.42,"Medium","03.11.2026",2250386],["bright water farm","https://s3.caser.gg/cdn/custom-cases/9019118ab65801104fb1302a00deef29-6af045592f030.webp",3.88,"High","08.11.2026",368478],["Апгрейд в х10","https://s3.caser.gg/cdn/custom-cases/51b9ab5f866b0d1e899251ac1e822faf-6aec53cb347c7.png",37.45,"High","05.11.2026",418375],["Tape farm","https://s3.caser.gg/cdn/custom-cases/0574810e5c61f807cbb2b7bc9ca66946-6af0a8e022d15.png",57.22,"High","09.11.2026",107951],["ФАРМ ИЗИ АЗИМОВ 4 РУБ","https://s3.caser.gg/cdn/custom-cases/c135855441c5bc2c440372431fbcce2d-6af07b8d89cb9.png",4.11,"High","08.11.2026",321036],["M9 Гамма","https://s3.caser.gg/cdn/custom-cases/f9e4232d5e61408f4939cf7f8f7a7c50-6aecf30b0f9b8.webp",4.21,"High","05.11.2026",741658],["каждый 5 золото","https://s3.caser.gg/cdn/custom-cases/d4d090b2a1dc49ce1f4bd1e9780c5cb9-6ae0d62238354.webp",155,"Medium","27.10.2026",1001935],["баг на окуп","https://s3.caser.gg/cdn/custom-cases/bed4e6fd2425d1b5b6e236db4e0b0e8c-6aee6fa189066.webp",91.56,"Medium","10.11.2026",57115],["Фарм баланса","https://s3.caser.gg/cdn/custom-cases/67d6cc7afbc96bb2534ac98157fecc94-6ae1090e6b376.png",10.84,"Medium","27.10.2026",800720],["5% knife","https://s3.caser.gg/cdn/custom-cases/398ed91c0635e894e448d5c2e5d52d16-6ae1160500235.webp",4.51,"High","02.11.2026",3288897],["Открывать по 4 кейса!","https://s3.caser.gg/cdn/custom-cases/d4578fd6603de170e57f44733faf2268-6ae0d7df1bd9f.png",25.52,"Low","27.10.2026",2008130]];
-const featuredCases=cases.slice(0,15);
+const featuredCases=[
+ ["Багровый лист","/assets/caser-new-cases.svg",39,"","",0,"0%","0%",false],
+ ["Морфей","/assets/caser-new-cases.svg",79,"","",0,"25%","0%",false],
+ ["Миньон","/assets/caser-new-cases.svg",99,"","",0,"50%","0%",false],
+ ["w","/assets/caser-new-cases.svg",150,"","",0,"75%","0%",true],
+ ["Дождливый вечер","/assets/caser-new-cases.svg",349,"","",0,"100%","0%",false],
+ ["Малибу","/assets/caser-new-cases.svg",549,"","",0,"0%","100%",true],
+ ["Шепот осени","/assets/caser-new-cases.svg",799,"","",0,"25%","100%",false],
+ ["Бургунди","/assets/caser-new-cases.svg",1199,"","",0,"50%","100%",false],
+ ["GTA 6 Ultimate","/assets/caser-new-cases.svg",8000,"","",0,"75%","100%",true],
+ ["Оазис","/assets/caser-new-cases.svg",49900,"","",0,"100%","100%",true]
+];
 const drops=[["★ Bayonet | Doppler","KNIFE",150000,"legendary","https://caser.one/cdn/fa/images/landing/items/bayonet-doppler.webp"],["AK-47 | Inheritance","AK-47",18500,"epic","https://caser.one/cdn/fa/images/landing/items/ak-inheritance.webp"],["P250 | Muertos","P250",1400,"common","https://caser.one/cdn/fa/images/landing/items/p250-muertos.webp"],["Galil AR | Sugar Rush","GALIL AR",800,"common","https://caser.one/cdn/fa/images/landing/items/galil-ar-sugar-rush.webp"],["UMP-45 | K.O. Factory","UMP-45",1100,"common","https://caser.one/cdn/fa/images/landing/items/ump45-ko-factory.webp"],["AWP | Printstream","AWP",50000,"legendary","https://caser.one/cdn/fa/images/landing/items/awp-printstream.webp"],["Desert Eagle | Printstream","DESERT EAGLE",8000,"epic","https://caser.one/cdn/fa/images/landing/items/desert-eagle-printstream.webp"],["FAMAS | Bad Trip","FAMAS",2000,"rare","https://caser.one/cdn/fa/images/landing/items/famas-bad-trip.webp"],["MP9 | Latte Rush","MP9",900,"common","https://caser.one/cdn/fa/images/landing/items/mp9-latte-rush.webp"],["★ Sport Gloves | Slingshot","GLOVES",85000,"legendary","https://caser.one/cdn/fa/images/landing/items/sport-gloves-slingshot.webp"],["Glock-18 | Fully Tuned","GLOCK-18",1200,"common","https://caser.one/cdn/fa/images/landing/items/glock18-fully-tuned.webp"],["Dual Berettas | Melondrama","DUAL BERETTAS",700,"common","https://caser.one/cdn/fa/images/landing/items/dual-berettas-melondrama.webp"],["MAC-10 | Disco Tech","MAC-10",1200,"common","https://caser.one/cdn/fa/images/landing/items/mac10-disco-tech.webp"],["★ Karambit | Autotronic","KARAMBIT",70000,"legendary","https://caser.one/cdn/fa/images/landing/items/karambit-autotronic.webp"],["USP-S | Orion","USP-S",5000,"rare","https://caser.one/cdn/fa/images/landing/items/usp-s-orion.webp"],["Tec-9 | Decimator","TEC-9",800,"common","https://caser.one/cdn/fa/images/landing/items/tec9-decimator.webp"],["SCAR-20 | Cyrex","SCAR-20",700,"common","https://caser.one/cdn/fa/images/landing/items/scar20-cyrex.webp"],["★ Specialist Gloves | Cloud Chaser","GLOVES",42000,"legendary","https://caser.one/cdn/fa/images/landing/items/specialist-gloves-cloud-chaser.webp"],["M4A1-S | Printstream","M4A1-S",18000,"epic","https://caser.one/cdn/fa/images/landing/items/m4a1s-printstream.webp"],["Five-SeveN | Fairy Tale","FIVE-SEVEN",1300,"common","https://caser.one/cdn/fa/images/landing/items/five-seven-fairy-tale.webp"],["SSG 08 | Turbo Peek","SSG 08",900,"common","https://caser.one/cdn/fa/images/landing/items/ssg08-turbo-peek.webp"]];
 const DEMO_C_PER_USD=100;
 let catalogItems=drops.slice();
@@ -1257,7 +1388,9 @@ function show(id){
 document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>show(b.dataset.view));$("avatar").onclick=()=>show("profile");$("rewardsLogin")?.addEventListener("click",()=>toast("Steam-авторизация в демо-версии не подключена"));
 function caseCard(c,i){return '<article class="case" data-case="'+i+'"><div class="caseart"><div class="casebox"><img src="'+c[1]+'" alt="'+c[0]+'" loading="lazy"></div></div><div class="caseinfo"><b>'+c[0]+'</b><span>'+Number(c[2]).toLocaleString("ru-RU",{minimumFractionDigits:2,maximumFractionDigits:2})+' C</span></div><small class="case-quality">'+(c[3]||"")+' · обновлён '+c[4]+'</small><small class="case-opens">'+Number(c[5]).toLocaleString("ru-RU")+' открытий</small></article>'}
 function featuredCaseCard(c,i){
- return '<article class="featured-case" data-case="'+i+'" data-case-type="featured"><div class="featured-case-art"><img src="'+c[1]+'" alt="'+c[0]+'" loading="lazy" onerror="this.style.opacity=0"></div><div class="featured-case-info"><b>'+c[0]+'</b><span>'+Number(c[2]).toLocaleString("ru-RU",{minimumFractionDigits:2,maximumFractionDigits:2})+' C</span></div></article>';
+ const badge=c[8]?'<span class="new">NEW</span>':"";
+ const position=""+c[6]+" "+c[7];
+ return '<article class="featured-case" data-case="'+i+'" data-case-type="featured">'+badge+'<div class="featured-case-art" style="background-image:url('+c[1]+');background-size:500% 200%;background-position:'+position+'"></div><div class="featured-case-info"><b>'+c[0]+'</b><span>'+Number(c[2]).toLocaleString("ru-RU",{minimumFractionDigits:0,maximumFractionDigits:0})+' ◈</span></div></article>';
 }
 let activeCaseFilter="all";
 function renderCases(){
@@ -1267,6 +1400,7 @@ function renderCases(){
  $("featuredCasesGrid").innerHTML=featuredCases.map(featuredCaseCard).join("");
  $("featuredCasesSection").hidden=activeCaseFilter==="authors";
  $("authorsSection").hidden=activeCaseFilter==="featured";
+ $("authorsSection").classList.toggle("standalone",activeCaseFilter==="authors");
  $("casegrid").innerHTML=list.map(o=>caseCard(o.c,o.i)).join("")||'<div class="empty-catalog">Кейсы не найдены</div>';
  $("customgrid").innerHTML="";
 }
@@ -1298,18 +1432,29 @@ function openCase(i,source="custom"){
  const c=source==="featured"?featuredCases[i]:cases[i];if(!c)return;
  activeCase=i;activeCaseSource=source;activeCaseData=c;
  selectedCaseCount=1;configureCaseQuantity(c);
- $("spinButton").disabled=false;$("quickSpinButton").disabled=false;$("spinButton").textContent="ОТКРЫТЬ КЕЙС";$("quickSpinButton").textContent="БЫСТРО · 1";
+ const art=$("caseArtwork"),object=art.parentElement;
+ const spriteCase=source==="featured";
+ object.classList.toggle("featured-sprite-hero",spriteCase);
+ object.style.removeProperty("--case-sprite-x");object.style.removeProperty("--case-sprite-y");
+ if(spriteCase){
+  object.style.setProperty("--sprite-x",c[6]||"0%");
+  object.style.setProperty("--sprite-y",c[7]||"0%");
+  art.style.display="none";
+ }else{
+  object.style.removeProperty("--sprite-x");object.style.removeProperty("--sprite-y");
+  art.style.display="block";art.src=c[1];art.alt=c[0];art.style.visibility="visible";
+  art.onerror=()=>{art.style.visibility="hidden"};
+ }
+ $("spinButton").disabled=true;$("quickSpinButton").disabled=true;
  $("caseTitle").textContent=c[0].toUpperCase();$("caseSceneTitle").textContent=c[0].toUpperCase();
  $("casePrice").textContent="СТОИМОСТЬ ОТКРЫТИЯ  "+fmt(c[2])+" C";
- const art=$("caseArtwork"),object=art.parentElement;
- object.classList.toggle("featured-case-hero",source==="featured");
- object.style.removeProperty("--case-sprite-x");object.style.removeProperty("--case-sprite-y");
- art.style.display="block";art.src=c[1];art.alt=c[0];art.style.visibility="visible";
- art.onerror=()=>{art.style.visibility="hidden"};
- $("caseOpening").hidden=true;$("caseScene").hidden=false;$("spinButton").disabled=false;
- $("spinButton").textContent="ОТКРЫТЬ КЕЙС";$("caseNotice").hidden=true;$("caseNotice").textContent="";
- $("caseItemsCount").textContent=drops.length+" ПРЕДМЕТОВ";
- $("caseContentsGrid").innerHTML=drops.map(d=>'<article class="case-content-item"><div class="case-content-art"><img src="'+d[4]+'" alt="'+d[0]+'" loading="lazy"></div><div class="case-content-name">'+d[0]+'</div><div class="case-content-meta"><span>'+String(d[3]||"").toUpperCase()+'</span><b>C '+fmt(d[2])+'</b></div></article>').join("");
+ const openOptions=document.querySelector(".case-open-options");
+ if(openOptions)openOptions.hidden=true;
+ $("caseOpening").hidden=true;$("caseScene").hidden=false;
+ $("caseNotice").hidden=false;
+ $("caseNotice").textContent="Состав предметов и вероятности выпадения ещё не синхронизированы с CASER. Открытие пока отключено, чтобы не показывать выдуманный результат.";
+ $("caseItemsCount").textContent="ДАННЫЕ НЕ СИНХРОНИЗИРОВАНЫ";
+ $("caseContentsGrid").innerHTML='<div class="case-data-pending">Список предметов и точные шансы для этого кейса пока не получены из оригинального CASER.</div>';
  show("caseDetail");window.scrollTo({top:0,behavior:"auto"});
 }
 $("casegrid").addEventListener("click",e=>{const c=e.target.closest("[data-case]");if(c)openCase(+c.dataset.case,"custom")});
@@ -1328,6 +1473,7 @@ document.querySelectorAll("[data-case-count]").forEach(button=>button.addEventLi
 function spin(quick=false){
  if(rolling)return;
  const c=activeCaseData;if(!c)return;
+ if(!c[9]){toast("Точные выпадения этого кейса ещё не подключены");return;}
  const maxCount=Number(c[2])<=50?7:5;
  const count=Math.max(1,Math.min(maxCount,selectedCaseCount||1));
  const totalCost=c[2]*count;
